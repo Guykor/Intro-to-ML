@@ -1,0 +1,1563 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass amsart
+\begin_preamble
+% Necessary Commands
+\usepackage{autobreak}
+\usepackage[T1]{fontenc}
+
+% Set space between words to be wider:
+\spaceskip=1.3\fontdimen2\font plus 1\fontdimen3\font minus 1.5\fontdimen4\font
+
+
+% Convert the Lyx colors into more pleasent colors 15
+\usepackage{xcolor}
+\definecolor{blue}{RGB}{14,107,217}
+\definecolor{green}{RGB}{0,158,40}
+\definecolor{red}{RGB}{235,16,16}
+\definecolor{brown}{RGB}{164,66,0}
+\definecolor{orange}{RGB}{231,135,26}
+\definecolor{purple}{RGB}{94,53,177}
+% Convert the QED Symbol at the end of proofs to a solid black square (credit: Yakir Oz)
+\usepackage{amssymb}
+\renewcommand{\qedsymbol}{$\blacksquare$}
+% This part makes the layout more similar to Hebrew Article, which I am more used to:
+\renewcommand*{\@seccntformat}[1]{\hspace{0.5cm}\csname the#1\endcsname\hspace{0.5cm}}
+\usepackage{titlesec}
+\titleformat{\section}{\fontsize{20}{20}\bfseries}{\thesection}{10pt}{}
+\titleformat{\subsection}{\fontsize{15}{15}\bfseries}{\thesubsection}{10pt}{}
+\titleformat{\subsubsection}{\bfseries}{\thesubsubsection}{10pt}{}
+% Correct the reversed parentheses in labels
+\usepackage{polyglossia}
+\setmainlanguage{hebrew}
+\newfontfamily{\hebrewfont}{David}
+\makeatletter
+\def\maketag@@@#1{\hbox{\m@th\normalfont\LRE{#1}}}
+\def\tagform@#1{\maketag@@@{(\ignorespaces#1\unskip)}}
+\makeatother
+
+\let\oldtext\text
+\renewcommand{\text}[1]{\oldtext{\LRE{#1}}}
+\end_preamble
+\use_default_options true
+\begin_modules
+theorems-ams
+eqs-within-sections
+figs-within-sections
+\end_modules
+\maintain_unincluded_children false
+\begin_local_layout
+Style Section
+	Align Right
+	Font
+	Series Medium
+	Shape Smallcaps
+	Size Larger
+	Series Bold
+	EndFont
+	TocLevel 1
+End
+
+Style Section*
+	Align Right
+	Font
+	Series Medium
+	Shape Smallcaps
+	Size Larger
+	Series Bold
+	EndFont
+
+End
+\end_local_layout
+\language hebrew
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "David"
+\font_sans "default" "David"
+\font_typewriter "default" "David"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts true
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype true
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 1
+\bibtex_command default
+\index_command default
+\paperfontsize 12
+\spacing double
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 3cm
+\topmargin 2cm
+\rightmargin 3cm
+\bottommargin 3cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation 0bp
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+מבוא למערכות לומדות - תרגיל
+\family roman
+\series bold
+\shape smallcaps
+\size larger
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+3
+\end_layout
+
+\begin_layout Author
+גיא קורנבליט, ת.ז
+\family roman
+\series medium
+\shape smallcaps
+\size large
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+308224948
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+אומד בייס אופטימלי ו-
+\begin_inset Formula $\text{LDA}$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+יהיו מרחב מדגם 
+\begin_inset Formula $\mathcal{X}=\mathbb{R}^{d}$
+\end_inset
+
+ ו-
+\begin_inset Formula $\mathcal{Y}=\left\{ \pm1\right\} $
+\end_inset
+
+.
+ יהא מדגם 
+\begin_inset Formula $S$
+\end_inset
+
+ , נניח כי הדגימות ב-
+\begin_inset Formula $S$
+\end_inset
+
+ נדגמו באופן בלתי תלוי מההתפלגות המשותפת מעל 
+\begin_inset Formula $\mathcal{X}\times\mathcal{Y}$
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+שאלה 
+\numeric on
+1
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+טענה
+\series default
+: נניח שההתפלגות 
+\begin_inset Formula $\mathcal{D}$
+\end_inset
+
+ ידועה, יהי 
+\begin_inset Formula $h_{\mathcal{D}}$
+\end_inset
+
+ אומד בייס אופטימלי מוגדר על ידי 
+\begin_inset Formula 
+\[
+\forall x\in\mathcal{X}\quad h_{\mathcal{D}}\left(x\right)=\begin{cases}
+1 & \mathbb{P}\left(y=1|x\right)\geq\frac{1}{2}\\
+-1 & o.w
+\end{cases}
+\]
+
+\end_inset
+
+אזי מתקיים 
+\begin_inset Formula 
+\[
+h_{\mathcal{D}}=\underset{y\in\left\{ \pm1\right\} }{\text{argmax}}\mathbb{P}\left(\boldsymbol{x}|y\right)\mathbb{P}\left(y\right)
+\]
+
+\end_inset
+
+
+\series bold
+הוכחה: 
+\series default
+נבחין כי הפונקציה מחזירה 
+\begin_inset Formula $1$
+\end_inset
+
+ אם
+\begin_inset Quotes erd
+\end_inset
+
+ם 
+\begin_inset Formula 
+\[
+\mathbb{P}\left(y=-1|\boldsymbol{x}\right)<\frac{1}{2}\iff\mathbb{P}\left(y=1|x\right)\geq\mathbb{P}\left(y=-1|x\right)
+\]
+
+\end_inset
+
+לפיכך, נוכל להתייחס ל-
+\begin_inset Formula $h$
+\end_inset
+
+ כפונקציה של 
+\begin_inset Formula $y$
+\end_inset
+
+, כך שהערך שמחזירה 
+\begin_inset Formula $h$
+\end_inset
+
+ הוא הערך שממקסם את ההסתברות, כלומר
+\begin_inset Formula 
+\begin{align*}
+\forall\boldsymbol{x}\in\mathcal{X}\quad h_{\mathcal{D}}\left(x\right) & =\underset{y\in\left\{ \pm1\right\} }{\text{argmax}}\left\{ \mathbb{P}\left(Y=y|\boldsymbol{x}\right)\right\} \\
+ & \underset{\text{Bayes\:rule}}{=}\underset{y\in\left\{ \pm1\right\} }{\text{argmax}}\left\{ \mathbb{P}\left(\boldsymbol{x}|Y=y\right)\mathbb{P}\left(Y=y\right)\right\} 
+\end{align*}
+
+\end_inset
+
+כנדרש.
+ 
+\begin_inset Formula $\blacksquare$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+שאלה 
+\numeric on
+2
+\end_layout
+
+\begin_layout Standard
+נניח כי לכל 
+\begin_inset Formula $\boldsymbol{x}\in\mathcal{X}=\mathbb{R}^{d}$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $\boldsymbol{x}|y\sim\mathcal{N}\left(\mu_{y},\Sigma\right)$
+\end_inset
+
+, כאשר 
+\begin_inset Formula $\mu_{y}\in\mathbb{R}^{d}$
+\end_inset
+
+ ו-
+\begin_inset Formula $\Sigma\in\mathbb{R}^{d\times d}$
+\end_inset
+
+.
+ נניח 
+\begin_inset Formula $\Sigma$
+\end_inset
+
+ ידועה, ו-
+\begin_inset Formula $\mu_{y}$
+\end_inset
+
+ ידוע לכל 
+\begin_inset Formula $y\in\left\{ \pm1\right\} $
+\end_inset
+
+, אזי 
+\begin_inset Formula 
+\[
+h_{\mathcal{D}}\left(\boldsymbol{x}\right)=\underset{y\in\left\{ \pm1\right\} }{\text{argmax}}\delta_{y}\left(\boldsymbol{x}\right)
+\]
+
+\end_inset
+
+כאשר 
+\begin_inset Formula $\delta_{y}=\boldsymbol{x}^{\top}\Sigma^{-1}\mu_{y}-\frac{1}{2}\mu_{y}^{\top}\Sigma^{-1}\mu_{y}+\ln\mathbb{P}(y)$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+הוכחה: 
+\series default
+בטענה הקודמת הראינו כי אומד בייס אופטימלי הינו מהצורה
+\begin_inset Formula 
+\[
+\forall\boldsymbol{x}\in\mathcal{X}\quad h_{\mathcal{D}}\left(x\right)=\underset{y\in\left\{ \pm1\right\} }{\text{argmax}}\left\{ \mathbb{P}_{\mathcal{D}}\left(\boldsymbol{x}|y\right)\mathbb{P}_{Y}\left(y\right)\right\} 
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+כאשר הביטוי 
+\begin_inset Formula $\mathbb{P}_{\mathcal{D}}\left(\boldsymbol{x}|y\right)$
+\end_inset
+
+ מתייחס להתפלגות הנקודתית של הוקטור 
+\begin_inset Formula $\boldsymbol{x}\in\mathbb{R}^{d}$
+\end_inset
+
+ והביטוי 
+\begin_inset Formula $\mathbb{P}_{Y}\left(y\right)$
+\end_inset
+
+ מתייחס להתפלגות השולית של המשתנה 
+\begin_inset Formula $Y$
+\end_inset
+
+.
+ כעת, מפני שההתפלגות המשותפת 
+\begin_inset Formula $\mathcal{D}=\mathcal{N}$
+\end_inset
+
+ הינה רציפה, ההתפלגות הנקודתית שקולה לפונקציית הצפיפות של המשתנה המקרי 
+\begin_inset Formula $X$
+\end_inset
+
+.
+ בנוסף, ממונוטוניות הלוגריתם, מתקיים לכל 
+\begin_inset Formula $y\in\left\{ \pm1\right\} $
+\end_inset
+
+ 
+\begin_inset Formula 
+\begin{align*}
+f_{\mathcal{D}}\left(\boldsymbol{x}|y\right)\mathbb{P}_{Y}\left(y\right) & =\text{ln}\left(f_{\mathcal{D}}\left(\boldsymbol{x}|y\right)\mathbb{P}_{Y}\left(y\right)\right)\\
+ & =\text{ln}\left(f_{\mathcal{D}}\left(\boldsymbol{x}|y\right)\right)+\text{ln}\left(\mathbb{P}_{Y}\left(y\right)\right)
+\end{align*}
+
+\end_inset
+
+נבחין כי 
+\begin_inset Formula $\text{ln}\left(f_{\mathcal{D}}\left(\boldsymbol{x}|y\right)\right)$
+\end_inset
+
+ היא בדיוק לוג פונקציית הנראות ומתקיים
+\begin_inset Formula 
+\begin{align*}
+\text{ln}\left(f_{\mathcal{D}}\left(\boldsymbol{x}|y\right)\right) & =\text{ln}\left(\frac{1}{\sqrt{(2\pi)^{d}det(\Sigma)}}\exp\left\{ -\frac{1}{2}\left(\boldsymbol{x}-\mu_{y}\right)^{\top}\Sigma^{-1}\left(\boldsymbol{x}-\mu_{y}\right)\right\} \right)\\
+ & =\underset{:=c}{\underbrace{\text{ln}\left(\frac{1}{\sqrt{(2\pi)^{d}det(\Sigma)}}\right)}}+-\frac{1}{2}\left(\boldsymbol{x}-\mu_{y}\right)^{\top}\Sigma^{-1}\left(\boldsymbol{x}-\mu_{y}\right)\\
+ & =c-\frac{1}{2}\left(\boldsymbol{x}^{T}\Sigma^{-1}\boldsymbol{x}-\boldsymbol{x}^{T}\Sigma^{-1}\mu_{y}-\mu_{y}^{T}\Sigma^{-1}\boldsymbol{x}+\mu_{y}^{T}\Sigma^{-1}\mu_{y}\right)\\
+ & =c-\frac{1}{2}\boldsymbol{x}^{T}\Sigma^{-1}\boldsymbol{x}+\boldsymbol{x}^{T}\Sigma^{-1}\mu_{y}-\frac{1}{2}\mu_{y}^{T}\Sigma^{-1}\mu_{y}
+\end{align*}
+
+\end_inset
+
+נבחין כי הביטוי 
+\begin_inset Formula $c=\frac{1}{2}\boldsymbol{x}^{T}\Sigma^{-1}\boldsymbol{x}$
+\end_inset
+
+ לא תלוי ב-
+\begin_inset Formula $y$
+\end_inset
+
+ ולכן לא רלוונטי למציאת 
+\begin_inset Formula $y$
+\end_inset
+
+ הממקסם את ערך הפונקציה.
+ בסה
+\begin_inset Quotes erd
+\end_inset
+
+כ נקבל 
+\begin_inset Formula 
+\begin{align*}
+h_{\mathcal{D}}\left(\boldsymbol{x}\right) & =\underset{y\in\left\{ \pm1\right\} }{\text{argmax}}\left\{ f_{\mathcal{D}}\left(\boldsymbol{x}|y\right)\mathbb{P}_{Y}\left(y\right)\right\} \\
+ & =\underset{y\in\left\{ \pm1\right\} }{\text{argmax}}\left\{ \text{ln}\left(f_{\mathcal{D}}\left(\boldsymbol{x}|y\right)\mathbb{P}_{Y}\left(y\right)\right)\right\} \\
+ & =\underset{y\in\left\{ \pm1\right\} }{\text{argmax}}\left\{ \underset{\delta_{y}\left(\boldsymbol{x}\right)}{\underbrace{\boldsymbol{x}^{T}\Sigma^{-1}\mu_{y}-\frac{1}{2}\mu_{y}^{T}\Sigma^{-1}\mu_{y}+\text{ln}\mathbb{P}\left(y\right)}}\right\} 
+\end{align*}
+
+\end_inset
+
+ כנדרש.
+ 
+\begin_inset Formula $\blacksquare$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+שאלה 
+\numeric on
+3
+\end_layout
+
+\begin_layout Standard
+כדי להמיר את אומד בייס, במקרה הריאלי בו ההתפלגות אינה ידועה, נדרש לאמוד
+ את 
+\begin_inset Formula $\mu_{+1},\mu_{-1}$
+\end_inset
+
+ ו-
+\begin_inset Formula $\Sigma$
+\end_inset
+
+.
+ בהינתן מדגם 
+\begin_inset Formula $S$
+\end_inset
+
+ מגודל 
+\begin_inset Formula $m$
+\end_inset
+
+, נסמן 
+\begin_inset Formula $S_{-}=\left\{ \left(\boldsymbol{x},-1\right)\in S\right\} $
+\end_inset
+
+ ו-
+\begin_inset Formula $S_{+}=\left\{ \left(\boldsymbol{x},1\right)\in S\right\} $
+\end_inset
+
+, וניעזר באומד בלתי מוטה שראינו עבור התוחלת, כלומר 
+\begin_inset Formula $\hat{\mu}_{1}=\frac{1}{\left|S_{+}\right|}\sum_{\boldsymbol{x}\in S_{+}}\boldsymbol{x}$
+\end_inset
+
+ ו-
+\begin_inset Formula $\hat{\mu}_{-1}=\frac{1}{\left|S_{+}\right|}\sum_{\boldsymbol{x}\in S_{+}}\boldsymbol{x}$
+\end_inset
+
+.
+ נאמוד את 
+\begin_inset Formula $\mathbb{P}\left(Y\right)$
+\end_inset
+
+ באמצעות פונקציית השכיחות.
+\end_layout
+
+\begin_layout Standard
+כדי לאמוד את מטריצת השונות המשותפת 
+\begin_inset Formula $\Sigma$
+\end_inset
+
+ של המשתנה המקרי 
+\begin_inset Formula $X|Y$
+\end_inset
+
+, נשתמש באומדים שהראינו למטריצת השונות המשותפת בהינתן כל ערך של 
+\begin_inset Formula $y$
+\end_inset
+
+, ונשתמש בממוצע משוקלל 
+\begin_inset Formula $\text{(Pooled Covariance)}$
+\end_inset
+
+.
+ כלומר 
+\begin_inset Formula 
+\[
+\hat{\Sigma}=\frac{1}{m-2}\sum_{y=\pm1}\sum_{i:y_{i}=y}\left(x_{i}-\hat{\mu}_{y}\right)\left(x_{i}-\hat{\mu}_{y}\right)^{T}
+\]
+
+\end_inset
+
+
+\series bold
+שאלה 
+\numeric on
+4
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+במקרה של מסווג דואר זבל, יתכנו הטעויות הבאות:
+\end_layout
+
+\begin_layout Enumerate
+סיווג דואר זבל כדואר רגיל.
+\end_layout
+
+\begin_layout Enumerate
+סיווג דואר רגיל כזבל
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ - זו הטעות בעלת נזק פוטנציאלי גדול יותר מהטעות השניה, ולכן נעדיף להימנע
+ ממנה לחלוטין.
+ 
+\end_layout
+
+\begin_layout Standard
+נסווג דואר רגיל בתווית 
+\begin_inset Formula $-1$
+\end_inset
+
+ )שלילי( ודואר זבל בתווית 
+\begin_inset Formula $1$
+\end_inset
+
+ )חיובי(, כך שטעות 
+\begin_inset Formula $\text{false-positive}$
+\end_inset
+
+ תהיה כאשר 
+\begin_inset Formula $y_{i}=-1$
+\end_inset
+
+ אבל המסווג יחזיר 
+\begin_inset Formula $\hat{y}_{i}=1$
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+שאלה 
+\numeric on
+5
+\end_layout
+
+\begin_layout Standard
+נתבונן בבעיית 
+\begin_inset Formula $\text{Hard-SVM}$
+\end_inset
+
+ שפיתחנו בתרגול, 
+\begin_inset Formula 
+\[
+\underset{(\mathbf{w},b)}{\text{argmin}}\|\mathbf{w}\|^{2}\text{ s.t. }\forall i,y_{i}\left(\left\langle \mathbf{w},\mathbf{x}_{i}\right\rangle +b\right)\geqslant1
+\]
+
+\end_inset
+
+נבחין כי נוכל לקודד את הסטיה 
+\begin_inset Formula $b\in\mathbb{R}$
+\end_inset
+
+ בקוארדינטה ה-
+\begin_inset Formula $n+1$
+\end_inset
+
+ ל-
+\begin_inset Formula $w$
+\end_inset
+
+, כאשר נידרש להוסיף פיצ'ר 
+\begin_inset Formula $\text{intercept}$
+\end_inset
+
+ לכל דגימה 
+\begin_inset Formula $\boldsymbol{x}_{i}$
+\end_inset
+
+.
+ נגדיר
+\begin_inset Formula 
+\begin{align*}
+w'=\left[\begin{array}{c}
+b\\
+w
+\end{array}\right]\in\mathbb{R}^{n+1} & ,\:\boldsymbol{x}'_{i}=\left[\begin{array}{c}
+1\\
+\boldsymbol{x}_{i}
+\end{array}\right],\:Q=2\left[\begin{array}{cc}
+0\\
+ & I_{n}
+\end{array}\right]\\
+\vec{a}=\vec{0}\in & \mathbb{R}^{n+1},\;d=-\vec{1}_{m}
+\end{align*}
+
+\end_inset
+
+ואת המטריצה 
+\begin_inset Formula $A\in\mathbb{R}^{m\times n+1}$
+\end_inset
+
+ כך ששורותיה מוגדרות לכל 
+\begin_inset Formula $i\in[m]$
+\end_inset
+
+ כך ש- 
+\begin_inset Formula $A_{i}=-y_{i}\left(\boldsymbol{x}_{i}^{\prime}\right)^{T}$
+\end_inset
+
+.
+ נראה כי הבעיה שקולה לבעיית 
+\begin_inset Formula $\text{QP}$
+\end_inset
+
+ מהצורה הקנונית:
+\begin_inset Formula 
+\[
+\begin{array}{c}
+\underset{w\in\mathbb{R}^{n+1}}{\text{argmin}}\left(\frac{1}{2}w'^{\top}Qw'+a^{\top}w'\right)\\
+\text{ s.t. }Aw'\leq d
+\end{array}
+\]
+
+\end_inset
+
+)הסימון 
+\begin_inset Formula $w\in\mathbb{R}^{n+1}$
+\end_inset
+
+ הינו עבור 
+\begin_inset Formula $w=w'$
+\end_inset
+
+ שהגדרנו, לטובת נוחות הסימון(.
+ ראשית, נטען כי פונקציית המטרה זהה - 
+\begin_inset Formula 
+\begin{align*}
+\frac{1}{2}w'^{\top}Qw'+a^{\top}w' & =w'^{\top}\left[\begin{array}{cc}
+0\\
+ & I_{n}
+\end{array}\right]w'=b\cdot0\cdot b+w^{\top}I_{n}w\\
+ & =\left\langle w,w\right\rangle =\left\Vert w\right\Vert ^{2}
+\end{align*}
+
+\end_inset
+
+כמו כן, נראה כי האילוצים שקולים - 
+\begin_inset Formula 
+\begin{align*}
+Aw'\leq d & \iff\forall i\in[m]\quad A_{i}w'\leq d_{i}\iff-y_{i}\left(\boldsymbol{x}_{i}^{\prime}\right)^{T}w'\leq-1\\
+ & \iff y_{i}\left[\begin{array}{c}
+1\\
+\boldsymbol{x}_{i}
+\end{array}\right]^{T}\left[\begin{array}{c}
+b\\
+w
+\end{array}\right]\geq1\iff y_{i}\left(b+\boldsymbol{x}_{i}^{\top}w\right)\geq1\\
+ & \iff y_{i}\left(w^{\top}\boldsymbol{x}_{i}+b\right)\geq1\iff y_{i}\left(\left\langle w,\boldsymbol{x}_{i}\right\rangle +b\right)\geq1
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+כלומר, האילוצים ופונקציית המטרה שקולים ולכן הבעיות שקולות.
+ כנדרש.
+ 
+\begin_inset Formula $\blacksquare$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+שאלה 
+\numeric on
+6
+\end_layout
+
+\begin_layout Standard
+נתבונן בבעיית 
+\begin_inset Formula $\text{Soft-SVM}$
+\end_inset
+
+ בנוסח הבא 
+\begin_inset Formula 
+\[
+\arg\min_{\mathbf{w},\left\{ \xi_{i}\right\} }\frac{\lambda}{2}\|w\|^{2}+\frac{1}{m}\sum_{i=1}^{m}\xi_{i}\text{ s.t. }\forall_{i},y_{i}\left\langle w,\boldsymbol{x}_{i}\right\rangle \geqslant1-\xi_{i}\text{ and }\xi_{i}\geqslant0
+\]
+
+\end_inset
+
+ונבחין כי לכל 
+\begin_inset Formula $i\in[m]$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula 
+\[
+y_{i}\left\langle w,\boldsymbol{x}_{i}\right\rangle \geqslant1-\xi_{i}\text{ and }\xi_{i}\geqslant0\iff\xi_{i}\geq1-y_{i}\left\langle w,\boldsymbol{x}_{i}\right\rangle \text{ and }\xi_{i}\geqslant0
+\]
+
+\end_inset
+
+כלומר, במידה והדגימה נמצאת מעבר ל-
+\begin_inset Formula $\text{margin}$
+\end_inset
+
+ של מחלקת התיוג ו-
+\begin_inset Formula $y_{i}\left\langle w,\boldsymbol{x}_{i}\right\rangle <1$
+\end_inset
+
+, הערך שממזער את 
+\begin_inset Formula $\xi_{i}$
+\end_inset
+
+ ביחס לפונקציית המטרה הינו 
+\begin_inset Formula $1-y_{i}\left\langle w,\boldsymbol{x}_{i}\right\rangle $
+\end_inset
+
+.
+ אחרת, אם אין הפרה של הדגימה את ה-
+\begin_inset Formula $\text{margin}$
+\end_inset
+
+ אז נוכל להימנע מהעלות של החריגה, והערך שימזער את 
+\begin_inset Formula $\xi_{i}$
+\end_inset
+
+ ויעמוד בתנאים )כי 
+\begin_inset Formula $1-y_{i}\left\langle w,\boldsymbol{x}_{i}\right\rangle <0$
+\end_inset
+
+( הינו 
+\begin_inset Formula $\xi_{i}=0$
+\end_inset
+
+.
+ לפיכך, הבחירה של 
+\begin_inset Formula $\xi_{i}$
+\end_inset
+
+ שתמזער את פונקציית המטרה ותעמוד באילוצים הינה 
+\begin_inset Formula 
+\[
+\ell^{\text{hinge}}1-y_{i}\left\langle w,\boldsymbol{x}_{i}\right\rangle =\xi_{i}=\text{max}\left\{ 0,1-y_{i}\left\langle w,\boldsymbol{x}_{i}\right\rangle \right\} 
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+ולכן נוכל לנסח את הבעיה באופן שקול 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\arg\min_{\mathbf{w}}\frac{\lambda}{2}\|\mathbf{w}\|^{2}+\frac{1}{m}\sum_{i=1}^{m}\ell^{hinge}\left(y_{i}\left\langle \mathbf{w},\mathbf{x}_{i}\right\rangle \right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+שאלה
+\family roman
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+9
+\series default
+\numeric off
+
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename ex3/pasted1.png
+	lyxscale 50
+	scale 50
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+השוואת היפר-מישורים של כל מודל, עבור 
+\begin_inset Formula $\text{train-set}$
+\end_inset
+
+ בגודל שונה 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+בשאלה זו, כאשר ההתפלגות ופונקציית התיוג ידועה, נבדקו המודלים ביחס ל-
+\begin_inset Formula $\text{ground truth}$
+\end_inset
+
+, נעיר כי 
+\begin_inset Formula $\text{SVM}$
+\end_inset
+
+ ממומש עם קבוע רגולריזציה גדול מאוד, ולכן המסווג שקול למסווג 
+\begin_inset Formula $\text{Hard-SVM}$
+\end_inset
+
+ שמצליח במשימתו מפני שבמקרה זה אנו במקרה הרלייזבילי.
+ ראשית, נבחין כי עם עליית גודל המדגם )סט האימון( המסווגים הולכים ומתקרבים
+ ל-
+\begin_inset Formula $\text{ground-truth}$
+\end_inset
+
+, לכן שגיאת סיווג-לא-נכון תתקרב ואף תתאפס, בסט האימון, ועבור נקודות חדשות.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+שאלה
+\family roman
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+11
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename ex3/ex10.png
+	scale 60
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\lang english
+Mean accuracy rate for each model on the Normal-bivariate distribtion
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+בגרף זה מתואר מדד הדיוק )
+\begin_inset Formula $\frac{\text{True positives+True negative}}{\text{Positive + Negative}}$
+\end_inset
+
+( של כל מסווג, מול גודל המדגם עליו התאמן המסווג, כאשר הדאטה בצורה סינטטית
+ מההתפלגות הדו-נורמלית למשתנים בלתי מתואמים עם תוחלת
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+0
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\numeric off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ושונות
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+1
+\numeric off
+.
+ ניכר, כי 
+\begin_inset Formula $\text{SVM}$
+\end_inset
+
+ שולט בתוצאות מדד הדיוק לכל גודל מדגם.
+ להבנתי, ההבדל טמון בפונקציית התיוג האמיתית, שהוגדרה להיות היפר המישור 
+\begin_inset Formula $f\left(\boldsymbol{x}\right)=\text{sign}\left\langle \left(\begin{array}{c}
+0.3\\
+-0.5
+\end{array}\right),\boldsymbol{x}\right\rangle +0.1$
+\end_inset
+
+.
+ כלומר, הדאטה ניתן להפרדה ליניארית, ולכן סביר להניח שאלגוריתמים עם מחלקת
+ היפותזות של מפרידים ליניארים ינצלו את המבנה של הבעיה כדי ללמוד קירוב טוב
+ יותר של ההיפותזה.
+ אבחנה זו מסבירה את הפער המתמשך בין הביצועים של מודל 
+\begin_inset Formula $\text{LDA}$
+\end_inset
+
+ ההסתברותי, לבין הביצועים של 
+\begin_inset Formula $\text{SVM}$
+\end_inset
+
+ ו-
+\begin_inset Formula $\text{Perceptron}$
+\end_inset
+
+.
+ בהתייחס לשני האחרונים, ניכר כי ההבדל המרכזי באופן פעולתם הוא אופן הלמידה.
+ מודל 
+\begin_inset Formula $\text{SVM}$
+\end_inset
+
+ מתחשב בשתי המחלקות כדי למצוא את היפר-המישור )כלומר, השוליים של היפר-המישור
+ רחוקים במידה שווה משני הוקטורים התומכים(, כאשר ה-
+\begin_inset Formula $\text{Perceptron}$
+\end_inset
+
+ מחפש את כל וקטור שעומד בכל התנאים, ואיטרטיבית לומד על כל נקודה בסט האימון
+ בנפרד, וכך מתחשב בכל צעד בפחות אילוצים.
+ כלומר, 
+\begin_inset Formula $\text{perceptron }$
+\end_inset
+
+ פועל בתנאי רלקסציה ביחס ל-
+\begin_inset Formula $\text{SVM}$
+\end_inset
+
+, ולכן סביר שאם הדאטה ניתן להפרדה ליניארית אז 
+\begin_inset Formula $\text{Hard-SVM}$
+\end_inset
+
+ יצליח להשיג ציון טוב גבוה יותר.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+שאלה
+\family roman
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+14
+\series default
+\numeric off
+
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename ex3/q14.png
+	lyxscale 60
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\lang english
+Mean accuracy as a function of sample size for each algorithm
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+גרף זה מציג את ההבדל במדד הדיוק 
+\begin_inset Formula $(\text{accuracy})$
+\end_inset
+
+ בין המסווגים השונים, כפונקציה של גודל המדגם עליו התאמנו בבעיית סיווג תמונות
+ של
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+הספרות
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+0
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\numeric off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ו-
+\numeric on
+1
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\numeric off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+למחלקה הנכונה.
+ כמו כן, מתואר גרף של זמני הריצה של אימון מודל לכל גודל מדגם, וחיזוי על
+ 
+\begin_inset Formula $\text{test-set}$
+\end_inset
+
+ קבוע, לכל מודל.
+ נבחין במגמות הבאות:
+\end_layout
+
+\begin_layout Enumerate
+מודל 
+\begin_inset Formula $\text{KNN}$
+\end_inset
+
+ משיג זמני ריצה גרועים ביחס לשאר המודלים.
+ זמן הריצה של המודל נשלט על ידי זמן החיזוי של דגימה מה-
+\begin_inset Formula $\text{test}$
+\end_inset
+
+, מפני שהאלגוריתם מחשב את המרחקים של כל דגימה ב-
+\begin_inset Formula $\text{train}$
+\end_inset
+
+ )ששמר בשלב האימון(, ממיין ובוחר את השכנים הקרובים ביותר.
+ נשים לב כי מדד הדיוק של האלגוריתם משיג תוצאות קרובות למודלים הטובים ביותר
+ ככל שסט האימון גדל )במחיר זמן ריצה משמעותי(.
+\end_layout
+
+\begin_layout Enumerate
+רגרסיה לוגיסטית ו-
+\begin_inset Formula $\text{Soft-svm}$
+\end_inset
+
+ יחסית בביצועים גם במדד הדיוק וגם בזמני הריצה.
+ להבנתי, זמני הריצה הנמוכים נובעים על רקע פתרונות יעילים שיש לבעיות אופטימיזציה
+ קמורה )למדנו על מימושים ספציפיים עבור רגרסיה, ותכנון ריבועי עבור 
+\begin_inset Formula $\text{SVM}$
+\end_inset
+
+(.
+ 
+\end_layout
+
+\begin_layout Enumerate
+עץ ההחלטה משיג זמני ריצה מהירים מאוד, אך במדד הדיוק המודל משיג את התוצאות
+ הנמוכות ביותר לכל גודל מדגם )באופן יחסי, עדיין מתייצב מעל
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+90
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\numeric off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+אחוזי דיוק ככל שגודל סט האימון עולה(.
+ יצוין, כי גם עבור מודל עם עומק עץ גדול יותר )
+\numeric on
+15
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\numeric off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+במקום
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+7
+\numeric off
+( השיפור לא שינה מגמה זו.
+ סביר להניח, כמו עבור 
+\begin_inset Formula $\text{7-NN}$
+\end_inset
+
+, כי הביצועים הנמוכים עבור סט אימון קטן יחסית נובעים מ-
+\begin_inset Formula $\text{under-fit}$
+\end_inset
+
+ ביחס לכמות החלוקות שהעץ מבצע.
+\end_layout
+
+\end_body
+\end_document

@@ -1,0 +1,3734 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass amsart
+\begin_preamble
+% Necessary Commands
+\usepackage{autobreak}
+\usepackage[T1]{fontenc}
+
+% Set space between words to be wider:
+\spaceskip=1.3\fontdimen2\font plus 1\fontdimen3\font minus 1.5\fontdimen4\font
+
+
+% Convert the Lyx colors into more pleasent colors 15
+\usepackage{xcolor}
+\definecolor{blue}{RGB}{14,107,217}
+\definecolor{green}{RGB}{0,158,40}
+\definecolor{red}{RGB}{235,16,16}
+\definecolor{brown}{RGB}{164,66,0}
+\definecolor{orange}{RGB}{231,135,26}
+\definecolor{purple}{RGB}{94,53,177}
+% Convert the QED Symbol at the end of proofs to a solid black square (credit: Yakir Oz)
+\usepackage{amssymb}
+\renewcommand{\qedsymbol}{$\blacksquare$}
+% This part makes the layout more similar to Hebrew Article, which I am more used to:
+\renewcommand*{\@seccntformat}[1]{\hspace{0.5cm}\csname the#1\endcsname\hspace{0.5cm}}
+\usepackage{titlesec}
+\titleformat{\section}{\fontsize{20}{20}\bfseries}{\thesection}{10pt}{}
+\titleformat{\subsection}{\fontsize{15}{15}\bfseries}{\thesubsection}{10pt}{}
+\titleformat{\subsubsection}{\bfseries}{\thesubsubsection}{10pt}{}
+% Correct the reversed parentheses in labels
+\usepackage{polyglossia}
+\setmainlanguage{hebrew}
+\newfontfamily{\hebrewfont}{David}
+\makeatletter
+\def\maketag@@@#1{\hbox{\m@th\normalfont\LRE{#1}}}
+\def\tagform@#1{\maketag@@@{(\ignorespaces#1\unskip)}}
+\makeatother
+
+\let\oldtext\text
+\renewcommand{\text}[1]{\oldtext{\LRE{#1}}}
+\end_preamble
+\use_default_options true
+\begin_modules
+theorems-ams
+eqs-within-sections
+figs-within-sections
+\end_modules
+\maintain_unincluded_children false
+\begin_local_layout
+Style Section
+	Align Right
+	Font
+	Series Medium
+	Shape Smallcaps
+	Size Larger
+	Series Bold
+	EndFont
+	TocLevel 1
+End
+
+Style Section*
+	Align Right
+	Font
+	Series Medium
+	Shape Smallcaps
+	Size Larger
+	Series Bold
+	EndFont
+
+End
+\end_local_layout
+\language hebrew
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "David"
+\font_sans "default" "David"
+\font_typewriter "default" "David"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts true
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype true
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 1
+\bibtex_command default
+\index_command default
+\paperfontsize 12
+\spacing double
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 3cm
+\topmargin 2cm
+\rightmargin 3cm
+\bottommargin 3cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation 0bp
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+מבוא למערכות לומדות - תרגיל
+\family roman
+\series bold
+\shape smallcaps
+\size larger
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+4
+\end_layout
+
+\begin_layout Author
+גיא קורנבליט, ת.ז
+\family roman
+\series medium
+\shape smallcaps
+\size large
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+308224948
+\numeric off
+ 
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+שאלה 
+\numeric on
+1
+\end_layout
+
+\begin_layout Standard
+יהי 
+\begin_inset Formula $\mathcal{A}$
+\end_inset
+
+ אלגוריתם לומד, 
+\begin_inset Formula $\mathcal{D}$
+\end_inset
+
+ התפלגות, ופונקציית ההפסד 
+\begin_inset Formula $\ell^{0-1}$
+\end_inset
+
+.
+ נוכיח כי הטענות הבאות שקולות:
+\end_layout
+
+\begin_layout Enumerate
+לכל 
+\begin_inset Formula $\varepsilon,\delta>0$
+\end_inset
+
+ קיימת פונקציה 
+\begin_inset Formula $m\left(\varepsilon,\delta\right)\in\mathbb{R}$
+\end_inset
+
+ כך שלכל 
+\begin_inset Formula $m\geq m\left(\varepsilon,\delta\right)$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula 
+\[
+\mathbb{P}_{S\sim\mathcal{D}^{m}}\left(L_{\mathcal{D}}\left(\mathcal{A}\left(S\right)\right)\leq\varepsilon\right)\geq1-\delta
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+מתקיים 
+\begin_inset Formula $\text{lim}_{m\rightarrow\infty}\mathbb{E}_{S\sim\mathcal{D}^{m}}\left(L_{\mathcal{D}}\left(\mathcal{A}\left(S\right)\right)\right)=0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+הוכחה: 
+\end_layout
+
+\begin_layout Standard
+ראשית, נסיק כי הטענות מוגדרות על בעיית סיווג, לומד 
+\begin_inset Formula $\mathcal{A}:2^{\mathcal{X}}\rightarrow\mathcal{Y}^{\mathcal{X}}$
+\end_inset
+
+ )ללא הנחת קיום של מחלקת היפותזות(, ועם הנחת הרלייזביליות.
+ כלומר, קיימת 
+\begin_inset Formula $f:\mathcal{X}\rightarrow\mathcal{Y}\in\left\{ 0,1\right\} $
+\end_inset
+
+ עבורה נוכל לכתוב 
+\begin_inset Formula $S=\left\{ \left(x_{i},f\left(x_{i}\right)\right)\right\} _{i=1}^{m}$
+\end_inset
+
+.
+ כאשר כל 
+\begin_inset Formula $X_{1},...,X_{m}\sim\mathcal{D}$
+\end_inset
+
+ לכל התפלגות 
+\begin_inset Formula $\mathcal{D}$
+\end_inset
+
+ מעל 
+\begin_inset Formula $\mathcal{X}$
+\end_inset
+
+, וגם 
+\begin_inset Formula $L_{\mathcal{D}}\left(f\right)=0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+בכיוון הראשון, 
+\series default
+יהיו 
+\begin_inset Formula $\varepsilon,\delta>0$
+\end_inset
+
+ כך שקיימת 
+\begin_inset Formula $m\left(\varepsilon,\delta\right)$
+\end_inset
+
+, עבורה לכל 
+\begin_inset Formula $m\geq m\left(\varepsilon,\delta\right)$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $\mathbb{P}_{S\sim\mathcal{D}^{m}}\left(L_{\mathcal{D}}\left(\mathcal{A}\left(S\right)\right)\leq\varepsilon\right)\geq1-\delta$
+\end_inset
+
+
+\begin_inset Formula $(*)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+צ
+\begin_inset Quotes erd
+\end_inset
+
+ל כי קיים 
+\begin_inset Formula $\varepsilon_{0}>0$
+\end_inset
+
+ כך שקיים 
+\begin_inset Formula $N\in\mathbb{N}$
+\end_inset
+
+ המקיים כי לכל 
+\begin_inset Formula $m>N$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $\left|\mathbb{E}_{S\sim\mathcal{D}^{m}}\left(L_{\mathcal{D}}\left(\mathcal{A}\left(S\right)\right)\right)\right|<\varepsilon_{0}$
+\end_inset
+
+.
+ ראשית, נבחין כי מאחר ו-
+\begin_inset Formula $L_{\mathcal{D}}$
+\end_inset
+
+ מוגדרת עם 
+\begin_inset Formula $\ell^{0-1}$
+\end_inset
+
+ אז 
+\begin_inset Formula $L_{\mathcal{D}}\left(\mathcal{A}\left(S\right)\right)=\mathbb{P}_{X\sim\mathcal{D}}\left(h_{S}(x)\neq f(x)\right)$
+\end_inset
+
+, כלומר 
+\begin_inset Formula $(\#)\;L_{\mathcal{D}}\left(\mathcal{A}\left(S\right)\right)\in\left[0,1\right]$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+מאחר ו-
+\begin_inset Formula $S$
+\end_inset
+
+ הוא משתנה מקרי עם התפלגות 
+\begin_inset Formula $\mathcal{D}^{m}$
+\end_inset
+
+, אז גם 
+\begin_inset Formula $L_{\mathcal{D}}\left(\mathcal{A}\left(S\right)\right)$
+\end_inset
+
+ משתנה מקרי ולכן מהגדרת התוחלת מתקיים -
+\begin_inset Formula 
+\begin{align*}
+\mathbb{E}_{S\sim\mathcal{D}^{m}}\left(L_{\mathcal{D}}\left(\mathcal{A}\left(S\right)\right)\right) & =\underset{S\subseteq\mathcal{X}^{m}}{\int}L_{\mathcal{D}}\left(\mathcal{A}\left(S\right)\right)\cdot f_{\mathcal{D}^{m}}\left(S\right)\\
+ & \overset{\text{additivity}}{=}\underset{\underset{L_{\mathcal{D}}\left(\mathcal{A}\left(S\right)\right)\leq\varepsilon}{S\subseteq\mathcal{X}^{m}}}{\int}L_{\mathcal{D}}\left(\mathcal{A}\left(S\right)\right)\cdot f_{\mathcal{D}^{m}}\left(S\right)+\underset{\underset{L_{\mathcal{D}}\left(\mathcal{A}\left(S\right)\right)>\varepsilon}{S\subseteq\mathcal{X}^{m}}}{\int}L_{\mathcal{D}}\left(\mathcal{A}\left(S\right)\right)\cdot f_{\mathcal{D}^{m}}\left(S\right)\\
+ & \overset{(\#)L_{\mathcal{D}}\leq1}{\leq}\int_{_{L_{\mathcal{D}}\left(\mathcal{A}\left(S\right)\right)\leq\varepsilon}}\varepsilon\cdot f_{\mathcal{D}^{m}}\left(S\right)+\int_{_{L_{\mathcal{D}}\left(\mathcal{A}\left(S\right)\right)>\varepsilon}}1\cdot f_{\mathcal{D}^{m}}\left(S\right)\\
+ & \leq\varepsilon\cdot\int_{_{L_{\mathcal{D}}\left(\mathcal{A}\left(S\right)\right)\leq\varepsilon}}\cdot f_{\mathcal{D}^{m}}\left(S\right)+\int_{L_{\mathcal{D}}\left(\mathcal{A}\left(S\right)\right)>\varepsilon}f_{\mathcal{D}^{m}}\left(S\right)\\
+ & =\varepsilon\cdot\overset{\leq1}{\mathbb{P}_{S\sim\mathcal{D}^{m}}\left(L_{\mathcal{D}}\left(\mathcal{A}\left(S\right)\right)\leq\varepsilon\right)}+\overset{(*)\:\leq\delta}{\mathbb{P}_{S\sim\mathcal{D}^{m}}\left(L_{\mathcal{D}}\left(\mathcal{A}\left(S\right)\right)>\varepsilon\right)}\\
+ & \leq\varepsilon+\delta
+\end{align*}
+
+\end_inset
+
+נגדיר 
+\begin_inset Formula $\varepsilon_{0}=\varepsilon+\delta>0$
+\end_inset
+
+, 
+\begin_inset Formula $N=m\left(\varepsilon,\delta\right)$
+\end_inset
+
+ וקיבלנו שלכל 
+\begin_inset Formula $m\geq N$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula 
+\[
+\left|\mathbb{E}_{S\sim\mathcal{D}^{m}}\left(L_{\mathcal{D}}\left(\mathcal{A}\left(S\right)\right)\right)\right|\leq\varepsilon_{0}
+\]
+
+\end_inset
+
+כאשר השקילות לביטוי בערך מוחלט מאחר ו-
+\begin_inset Formula $L_{\mathcal{D}}\left(\mathcal{A}\left(S\right)\right)\in[0,1]$
+\end_inset
+
+, אז התוחלת תמיד אי-שלילית.
+ 
+\begin_inset Formula $\blacksquare$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+בכיוון השני, 
+\series default
+יהיו 
+\begin_inset Formula $\varepsilon,\delta>0$
+\end_inset
+
+.
+ נגדיר 
+\begin_inset Formula $\varepsilon_{0}=\varepsilon\delta>0$
+\end_inset
+
+, אז מההנחה, קיים 
+\begin_inset Formula $N\in\mathbb{N}$
+\end_inset
+
+ כך שלכל 
+\begin_inset Formula $m\geq N$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $\left|\mathbb{E}_{S\sim\mathcal{D}^{m}}\left(L_{\mathcal{D}}\left(\mathcal{A}\left(S\right)\right)\right)\right|\leq\varepsilon_{0}$
+\end_inset
+
+.
+ כעת, מאחר ו- 
+\begin_inset Formula $L_{\mathcal{D}}\left(\mathcal{A}\left(S\right)\right)$
+\end_inset
+
+ הינו פונקציה של המשתנה המקרי 
+\begin_inset Formula $S$
+\end_inset
+
+, אזי שגיאת ההכללה הינה משתנה מקרי אי-שלילי.
+ לפיכך, תנאי אי-שוויון מרקוב מתקיימים ולכן 
+\begin_inset Formula 
+\[
+\mathbb{P}_{S\sim\mathcal{D}^{m}}\left(L_{\mathcal{D}}\left(\mathcal{A}\left(S\right)\right)>\varepsilon\right)\leq\frac{\mathbb{E}_{S\sim\mathcal{D}^{m}}\left(L_{\mathcal{D}}\left(\mathcal{A}\left(S\right)\right)\right)}{\varepsilon}\leq\frac{\varepsilon_{0}}{\varepsilon}=\delta
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+והמאורע המשלים הינו 
+\begin_inset Formula $\mathbb{P}_{S\sim\mathcal{D}^{m}}\left(L_{\mathcal{D}}\left(\mathcal{A}\left(S\right)\right)\leq\varepsilon\right)\geq1-\delta$
+\end_inset
+
+ כנדרש.
+ 
+\begin_inset Formula $\blacksquare$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+שאלה 
+\numeric on
+2
+\numeric off
+ 
+\end_layout
+
+\begin_layout Standard
+יהי 
+\begin_inset Formula $\mathcal{X}=\mathbb{R}^{2}$
+\end_inset
+
+, 
+\begin_inset Formula $\mathcal{Y}=\left\{ 0,1\right\} $
+\end_inset
+
+ ותהי 
+\begin_inset Formula $\mathcal{H}_{r}=\left\{ h_{r}:r\in\mathbb{R}^{2}\right\} $
+\end_inset
+
+, כך ש-
+\begin_inset Formula $h_{r}(x)=\boldsymbol{1}_{\left\{ \left\Vert x\right\Vert _{2}\leq r\right\} }$
+\end_inset
+
+.
+ נראה כי 
+\begin_inset Formula $\mathcal{H}$
+\end_inset
+
+ היא למידה-
+\begin_inset Formula $\text{PAC}$
+\end_inset
+
+ וסיבוכיות המדגם חסומה ע
+\begin_inset Quotes erd
+\end_inset
+
+י 
+\begin_inset Formula $m_{\mathcal{H}}\left(\varepsilon,\delta\right)\leq\frac{\text{log}\left(1/\delta\right)}{\varepsilon}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+הוכחה: 
+\end_layout
+
+\begin_layout Itemize
+נגדיר לכל 
+\begin_inset Formula $h\in\mathcal{H}$
+\end_inset
+
+ את שגיאת ההכללה להיות 
+\begin_inset Formula 
+\[
+L_{\mathcal{D}}\left(h_{S}\right)=\mathbb{E}_{X\sim\mathcal{D}}\left(h_{S}(X)\neq h_{\theta}\left(X\right)\right)=\mathbb{P}_{X\sim\mathcal{D}}\left(\boldsymbol{1}_{h_{S}(X)\neq h^{*}\left(X\right)}\right)
+\]
+
+\end_inset
+
+עבור 
+\begin_inset Formula $h_{\theta}:\mathcal{X}\rightarrow\mathcal{Y}$
+\end_inset
+
+, פונקציית 
+\begin_inset Formula $\text{Ground-truth}$
+\end_inset
+
+ )כדור היחידה הסגור( תחת הנחת הרלייזביליות, המקיימת 
+\begin_inset Formula $L_{\mathcal{D}}\left(h_{\theta}\right)=0$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+נגדיר אלגוריתם למידה 
+\begin_inset Formula $\mathcal{A}$
+\end_inset
+
+ )
+\begin_inset Formula $\mathcal{A}_{m}$
+\end_inset
+
+( 
+\series default
+עם עיקרון 
+\begin_inset Formula $\text{tightest fit for positive examples}$
+\end_inset
+
+.
+ בהינתן 
+\begin_inset Formula $S=\left(\boldsymbol{x}_{i},y_{i}\right)_{i=1}^{m}$
+\end_inset
+
+ מדגם בגודל 
+\begin_inset Formula $m\in\mathbb{N}$
+\end_inset
+
+ ,
+\begin_inset Formula $\mathcal{A}$
+\end_inset
+
+ מחזיר היפותזה 
+\begin_inset Formula $h_{r_{alg}}\in\mathcal{H}$
+\end_inset
+
+ כאשר 
+\begin_inset Formula 
+\[
+r_{alg}=\underset{y_{i}=1}{\text{max}}\left\Vert x_{i}\right\Vert _{2}
+\]
+
+\end_inset
+
+אם לכל 
+\begin_inset Formula $i\in[m]$
+\end_inset
+
+, מתקיים 
+\begin_inset Formula $y_{i}=1$
+\end_inset
+
+ אז 
+\begin_inset Formula $r_{alg}=\infty$
+\end_inset
+
+ )כלומר נסווג הכל ב-
+\numeric on
+1
+\numeric off
+(, ואם 
+\begin_inset Formula $y_{i}=0$
+\end_inset
+
+ לכל 
+\begin_inset Formula $i$
+\end_inset
+
+ אז 
+\begin_inset Formula $r_{alg}=-\infty$
+\end_inset
+
+ )נסווג הכל כ-
+\numeric on
+0
+\numeric off
+(.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+הוכחת 
+\begin_inset Formula $\mathcal{H}$
+\end_inset
+
+ למידה-
+\begin_inset Formula $\text{PAC}$
+\end_inset
+
+.
+ 
+\series default
+יהיו 
+\begin_inset Formula $\varepsilon,\delta>0$
+\end_inset
+
+, ותהי התפלגות 
+\begin_inset Formula $\mathcal{D}$
+\end_inset
+
+ מעל 
+\begin_inset Formula $\mathcal{X}$
+\end_inset
+
+.
+ מתקיים 
+\begin_inset Formula $r_{alg}\leq\theta$
+\end_inset
+
+, נניח כי 
+\begin_inset Formula $r_{alg}<\theta$
+\end_inset
+
+.
+ כמו כן, נבחין כי הסיווג יהיה נכון עבור דגימות שמקיימות 
+\begin_inset Formula $\left\Vert x\right\Vert _{2}\leq r_{alg}$
+\end_inset
+
+ ו-
+\begin_inset Formula $\left\Vert x\right\Vert _{2}>\theta$
+\end_inset
+
+, ולכן טעות הכללה של המודל תהיה בתחום 
+\begin_inset Formula $\left\{ \boldsymbol{x}\in\mathbb{R}^{2}:r_{alg}<\left\Vert x\right\Vert _{2}<\theta\right\} $
+\end_inset
+
+.
+ במילים אחרות, נוכל לעדכן את האינדיקטור שמגדיר את שגיאת ההכללה כך ש-
+\begin_inset Formula $\boldsymbol{1}_{\left\{ X\in\mathbb{R}^{2}:r_{alg}<\left\Vert X\right\Vert _{2}<\theta\right\} }=\boldsymbol{1}_{h_{S}(X)\neq h^{*}\left(X\right)}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+נחפש את ההסתברות למדגם שגורר טעות הכללה של לכל היותר 
+\begin_inset Formula $\varepsilon$
+\end_inset
+
+.
+ 
+\series default
+נבחין כי אם 
+\begin_inset Formula $\mathbb{P}_{X\sim\mathcal{D}}\left(-\infty<\left\Vert X\right\Vert _{2}<\theta\right)<\varepsilon$
+\end_inset
+
+ אז 
+\begin_inset Formula $L_{\mathcal{D}}\left(h_{S}\right)=\mathbb{P}_{X\sim\mathcal{D}}\left(r_{alg}<\left\Vert X\right\Vert _{2}<\theta\right)<\varepsilon$
+\end_inset
+
+ לכל 
+\begin_inset Formula $S\subseteq\mathcal{X}$
+\end_inset
+
+.
+ כלומר ההיפותזה למידה 
+\begin_inset Formula $\text{PAC}$
+\end_inset
+
+ כמעט-תמיד )בהסתברות 
+\begin_inset Formula $1$
+\end_inset
+
+ עבור 
+\begin_inset Formula $\delta=0$
+\end_inset
+
+(.
+ לכן, נניח כי 
+\begin_inset Formula $\mathbb{P}_{X\sim\mathcal{D}}\left(-\infty<\left\Vert X\right\Vert _{2}<\theta\right)\geq\varepsilon$
+\end_inset
+
+, ונגדיר 
+\begin_inset Formula $\theta'\in\mathbb{R}$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $\mathbb{P}_{X\sim\mathcal{D}}\left(\theta'<\left\Vert X\right\Vert _{2}<\theta\right)=\varepsilon$
+\end_inset
+
+.
+ נחלק למקרים.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+אם 
+\begin_inset Formula $\theta'<r_{alg}$
+\end_inset
+
+, אז מתקיים 
+\begin_inset Formula $\left(\theta'\leq r_{alg}<\theta\right)$
+\end_inset
+
+ וממונוטוניות ההסתברות מתקיים 
+\begin_inset Formula $L_{\mathcal{D}}\left(h_{S}\right)=\mathbb{P}_{X\sim\mathcal{D}}\left(r_{alg}<\left\Vert X\right\Vert _{2}<\theta\right)<\varepsilon$
+\end_inset
+
+, כלומר ההסתברות לשגיאת ההכללה חסומה ע
+\begin_inset Quotes erd
+\end_inset
+
+י 
+\begin_inset Formula $\varepsilon$
+\end_inset
+
+ כמעט-תמיד.
+ 
+\end_layout
+
+\begin_layout Itemize
+אם 
+\begin_inset Formula $r_{alg}\leq\theta'$
+\end_inset
+
+ )המעגל שמגדיר 
+\begin_inset Formula $\mathcal{A}$
+\end_inset
+
+ מוכל במעגל שרדיוסו 
+\begin_inset Formula $\theta'$
+\end_inset
+
+(, אז נקבל 
+\begin_inset Formula $L_{\mathcal{D}}\left(h_{S}\right)\geq\varepsilon$
+\end_inset
+
+.
+ ההסתברות למאורע זה הינה כאשר המדגם לא כולל נקודות בשטח בין המעגל ברדיוס
+ 
+\begin_inset Formula $\theta'$
+\end_inset
+
+ לבין המעגל ברדיוס 
+\begin_inset Formula $\theta$
+\end_inset
+
+, אחרת מאופן פעולת האלגוריתם היינו חוזרים למקרה בו 
+\begin_inset Formula $\theta'<r_{alg}$
+\end_inset
+
+.
+ מאחר וההסתברות לנקודה בודדת להיות בשטח זה הינה בדיוק 
+\begin_inset Formula $\varepsilon$
+\end_inset
+
+, ומפני שכל הדגימות ב-
+\begin_inset Formula $S$
+\end_inset
+
+ ב
+\begin_inset Quotes erd
+\end_inset
+
+ת נקבל כי 
+\begin_inset Formula 
+\[
+\mathbb{P}_{S\sim\mathcal{D}^{m}}\left(L_{\mathcal{D}}\left(h_{S}\right)\geq\varepsilon\right)=\left(1-\varepsilon\right)^{m}
+\]
+
+\end_inset
+
+ כעת, נובע מפיתוח טור טיילור של אקספוננט כי 
+\begin_inset Formula $1-x\leq e^{-x}$
+\end_inset
+
+ ולכן 
+\begin_inset Formula 
+\begin{align*}
+\mathbb{P}_{S\sim\mathcal{D}^{m}}\left(L_{\mathcal{D}}\left(h_{S}\right)\geq\varepsilon\right)\leq e^{-\varepsilon m}
+\end{align*}
+
+\end_inset
+
+ נחסום את ההסתברות 
+\begin_inset Formula $e^{\varepsilon m}\leq\delta\iff m\geq\frac{-\text{log}\left(\delta\right)}{\varepsilon}=\frac{\text{log}(1)-\text{log}\left(\delta\right)}{\varepsilon}=\frac{\text{log}\left(\frac{1}{\delta}\right)}{\varepsilon}$
+\end_inset
+
+.
+ נגדיר 
+\begin_inset Formula $m_{\mathcal{H}}\left(\varepsilon,\delta\right)=\frac{\text{log}\left(\frac{1}{\delta}\right)}{\varepsilon}$
+\end_inset
+
+ ומכאן הטענה.
+ 
+\begin_inset Formula $\blacksquare$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+
+\series bold
+שאלה 
+\numeric on
+3
+\end_layout
+
+\begin_layout Standard
+יהיו 
+\begin_inset Formula $d\geq2$
+\end_inset
+
+,
+\begin_inset Formula $\mathcal{X}=\left\{ 0,1\right\} ^{d}$
+\end_inset
+
+ ו-
+\begin_inset Formula $\mathcal{Y}=\left\{ 0,1\right\} $
+\end_inset
+
+.
+ כל דגימה 
+\begin_inset Formula $(\boldsymbol{x},y)$
+\end_inset
+
+ מורכבת מהשמה שונה של 
+\begin_inset Formula $d$
+\end_inset
+
+ משתנים ותיוג.
+ לכל משתנה 
+\begin_inset Formula $x_{k},k\in[d]$
+\end_inset
+
+, נסמן את שני הליטרלים - 
+\begin_inset Formula $x_{k}$
+\end_inset
+
+ ו-
+\begin_inset Formula $\overline{x_{k}}=1-x_{k}$
+\end_inset
+
+.
+ המחלקה 
+\begin_inset Formula $\mathcal{H}_{con}$
+\end_inset
+
+ מוגדרת על תתי-קבוצות של 
+\begin_inset Formula $2d$
+\end_inset
+
+ המשתנים הללו וקוניוקציה ביניהם.
+ 
+\series bold
+נמצא את מימד 
+\begin_inset Formula $\text{VC}$
+\end_inset
+
+ של 
+\begin_inset Formula $\mathcal{H}_{con}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+הוכחה: 
+\series default
+נטען כי 
+\begin_inset Formula $\text{VC-dimension}\left(\mathcal{H}_{con}\right)=d$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+נראה כי קיימת קבוצה 
+\begin_inset Formula $C\subseteq\mathcal{X}$
+\end_inset
+
+ כך ש-
+\begin_inset Formula $\left|C\right|=d$
+\end_inset
+
+, 
+\begin_inset Formula $\mathcal{H}_{con}$
+\end_inset
+
+ מנתצת 
+\begin_inset Formula $C$
+\end_inset
+
+.
+ 
+\series default
+תהי 
+\begin_inset Formula $C=\left(e_{1},...,e_{d}\right)$
+\end_inset
+
+.
+ לכל וקטור תיוגים 
+\begin_inset Formula $\vec{y}=\left(y_{1},...,y_{d}\right)^{\top}\in\left\{ 0,1\right\} ^{d}$
+\end_inset
+
+.
+ נגדיר את הקבוצה 
+\begin_inset Formula $I=\left\{ i\in[d]:y_{i}=0\right\} $
+\end_inset
+
+.
+ נגדיר את ההיפותזה באופן הבא - 
+\begin_inset Formula 
+\[
+h=\underset{i\in I}{\land}\overline{x_{i}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+כלומר, ההיפותזה מתייגת איבר ב-
+\numeric on
+1
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\numeric off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+אם
+\begin_inset Quotes erd
+\end_inset
+
+ם הליטרלים שלו מספקים את נוסחת הגימום.
+ יהי 
+\begin_inset Formula $j\in[d]$
+\end_inset
+
+, אם 
+\begin_inset Formula $j\in I$
+\end_inset
+
+ אז ל-
+\begin_inset Formula $e_{j}$
+\end_inset
+
+ יש
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+1
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\numeric off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+בכניסה ה-
+\begin_inset Formula $j$
+\end_inset
+
+ ולכן הליטרל 
+\begin_inset Formula $\overline{x_{j}}$
+\end_inset
+
+ מופיע בגימום ולכן 
+\begin_inset Formula $h(e_{j})=0=y_{i}$
+\end_inset
+
+.
+ אם 
+\begin_inset Formula $j\notin I$
+\end_inset
+
+, אז ל-
+\begin_inset Formula $e_{j}$
+\end_inset
+
+ יש
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ אפס בכל קוארדינטה 
+\begin_inset Formula $i\in I$
+\end_inset
+
+ ו-
+\begin_inset Formula $\overline{x_{j}}$
+\end_inset
+
+ לא נמצא בגימום ולכן 
+\begin_inset Formula $e_{j}$
+\end_inset
+
+ מספקת את הנוסחה ולכן 
+\begin_inset Formula $h(e_{j})=1=y_{i}$
+\end_inset
+
+.
+ כנדרש.
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+הראינו כי לכל תיוג אפשרי של 
+\begin_inset Formula $C$
+\end_inset
+
+ קיימת היפותזה שתתייג את הקבוצה לפיו, ולכן 
+\begin_inset Formula $\mathcal{H}_{con}$
+\end_inset
+
+ מנתצת את 
+\begin_inset Formula $C$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+
+\series bold
+נראה כי לכל קבוצה 
+\begin_inset Formula $C\subseteq\mathcal{X}$
+\end_inset
+
+ כך ש- 
+\begin_inset Formula $\left|C\right|=d+1$
+\end_inset
+
+, 
+\begin_inset Formula $\mathcal{H}_{con}$
+\end_inset
+
+ לא מנתצת את 
+\begin_inset Formula $C$
+\end_inset
+
+.
+
+\series default
+ תהי 
+\begin_inset Formula $C\subseteq\mathcal{X}$
+\end_inset
+
+ כך ש- 
+\begin_inset Formula $\left|C\right|=d+1$
+\end_inset
+
+.
+ נסמן 
+\begin_inset Formula $C=\left(x_{1},...x_{d+1}\right)$
+\end_inset
+
+ כאשר לכל דגימה 
+\begin_inset Formula $x_{i}$
+\end_inset
+
+ 
+\begin_inset Formula $i\in[d+1]$
+\end_inset
+
+ נסמן ב-
+\begin_inset Formula $x_{i}^{k}$
+\end_inset
+
+ את הקוארדינטה ה-
+\begin_inset Formula $k\in[d]$
+\end_inset
+
+, כלומר את המשתנה הבוליאני ה-
+\begin_inset Formula $k$
+\end_inset
+
+.
+ נניח בשלילה כי 
+\begin_inset Formula $\mathcal{H}_{con}$
+\end_inset
+
+ מנתצת את 
+\begin_inset Formula $C$
+\end_inset
+
+, כלומר לכל וקטור תיוג 
+\begin_inset Formula $y\in\left\{ 0,1\right\} ^{d+1}$
+\end_inset
+
+ קיימת היפותזה 
+\begin_inset Formula $h\in\mathcal{H}_{C}$
+\end_inset
+
+ שמשיגה את אותו התיוג ב-
+\begin_inset Formula $C$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+נגדיר קבוצת תיוגים 
+\begin_inset Formula 
+\[
+L=\left\{ \left(y_{1},y_{2},...,y_{d+1}\right)\in\left\{ 0,1\right\} ^{d+1}:\exists i\in[d+1]\:s.t\:y_{i}=0,\forall j\neq i\;y_{j}=1\right\} 
+\]
+
+\end_inset
+
+
+\begin_inset Formula $L$
+\end_inset
+
+ מכילה כל האפשרויות לוקטור שמכיל קוארדינטה
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+0
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\numeric off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+יחידה, לכן 
+\begin_inset Formula $\left|L\right|=d+1$
+\end_inset
+
+.
+ בנוסף, מאחר ו-
+\begin_inset Formula $\mathcal{H}_{con}$
+\end_inset
+
+ מנתצת את 
+\begin_inset Formula $C$
+\end_inset
+
+ והקבוצה 
+\begin_inset Formula $L$
+\end_inset
+
+ מוכלת בקבוצת התיוגים, אז בפרט קיימות 
+\begin_inset Formula $h_{1},...,h_{d+1}\in\mathcal{H}_{C}$
+\end_inset
+
+ שמשיגות כל תיוג בקבוצה 
+\begin_inset Formula $L$
+\end_inset
+
+.
+ נניח כי 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+לכל 
+\begin_inset Formula $i\in[d+1]$
+\end_inset
+
+, 
+\begin_inset Formula $h_{i}\left(x_{i}\right)=0$
+\end_inset
+
+ וגם לכל 
+\begin_inset Formula $j\neq i$
+\end_inset
+
+ 
+\begin_inset Formula $h_{i}\left(x_{j}\right)=1$
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+.
+ 
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+אבחנה: 
+\series default
+נשים לב כי 
+\begin_inset Formula $x_{i}$
+\end_inset
+
+ נשלח אל האפס אם
+\begin_inset Quotes erd
+\end_inset
+
+ם אינו מספק את נוסחת הגימום של 
+\begin_inset Formula $h_{i}$
+\end_inset
+
+, לכן נבחין כי קיים ליטרל בנוסחת הגימום שמגדירה 
+\begin_inset Formula $h_{i}$
+\end_inset
+
+.
+ אחרת, נוסחת הגימום אינה מכילה ליטרלים, והגימום הריק מגדיר תיוג מלא של כל
+ האיברים ב-
+\begin_inset Formula $C$
+\end_inset
+
+ ב-
+\numeric on
+1
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\numeric off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+)כי כל הליטרלים המוגדרים באיברי 
+\begin_inset Formula $C$
+\end_inset
+
+ מסופקים על ידי המשוואה הריקה(.
+ כלומר, לכל 
+\begin_inset Formula $h_{i}$
+\end_inset
+
+ קיים 
+\begin_inset Formula $k\in[d]$
+\end_inset
+
+ כך ש- 
+\begin_inset Formula $x_{k}$
+\end_inset
+
+ או 
+\begin_inset Formula $\overline{x_{k}}$
+\end_inset
+
+ מופיע בגימום.
+ 
+\end_layout
+
+\begin_layout Standard
+בסה
+\begin_inset Quotes erd
+\end_inset
+
+כ, הפונקציות 
+\begin_inset Formula $h_{1},...h_{d+1}$
+\end_inset
+
+ מגדירות תיוגים של איברי 
+\begin_inset Formula $C$
+\end_inset
+
+ שכוללים תיוג
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+0
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\numeric off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+יחיד, לכן בנוסחאות הגימום של הפונקציות מופיעים לפחות 
+\begin_inset Formula $d+1$
+\end_inset
+
+ ליטרלים.
+ אולם, קיימים 
+\begin_inset Formula $d$
+\end_inset
+
+ משתנים ולכן מעיקרון שובך היונים בהכרח קיים משתנה שמופיע בשתי נוסחאות גימום
+ שונות, שמתאימות לשתי היפותזות שונות.
+ נסמן את הקוארדינטה של המשתנה המשותף ב-
+\begin_inset Formula $k$
+\end_inset
+
+, ונניח כי הלה משותף לנוסחאות הגימום של 
+\begin_inset Formula $h_{1}$
+\end_inset
+
+ ו-
+\begin_inset Formula $h_{2}$
+\end_inset
+
+, נסמן את הנוסחאות ב- 
+\begin_inset Formula $l_{1},l_{2}$
+\end_inset
+
+.
+ נחלק למקרים:
+\end_layout
+
+\begin_layout Enumerate
+אם 
+\begin_inset Formula $x^{k}\in l_{1}$
+\end_inset
+
+ וגם 
+\begin_inset Formula $x^{k}\in l_{2}$
+\end_inset
+
+, אזי 
+\begin_inset Formula $h_{1}\left(x_{1}\right)=0$
+\end_inset
+
+ אם
+\begin_inset Quotes erd
+\end_inset
+
+ם 
+\begin_inset Formula $x_{1}^{k}=0$
+\end_inset
+
+, ו-
+\begin_inset Formula $h_{2}\left(x_{2}\right)=0$
+\end_inset
+
+ אם
+\begin_inset Quotes erd
+\end_inset
+
+ם 
+\begin_inset Formula $x_{2}^{k}=0$
+\end_inset
+
+ ולכן 
+\begin_inset Formula $h_{1}\left(x_{2}\right)=0$
+\end_inset
+
+ בסתירה להגדרת ההיפותזות )אם בשתי הנוסחאות מופיע 
+\begin_inset Formula $\overline{x^{k}}$
+\end_inset
+
+ ההוכחה סימטרית(.
+ 
+\end_layout
+
+\begin_layout Enumerate
+אם 
+\begin_inset Formula $x_{k}\in l_{1}$
+\end_inset
+
+ וגם 
+\begin_inset Formula $\overline{x_{k}}\in l_{2}$
+\end_inset
+
+, אזי 
+\begin_inset Formula $h_{1}\left(x_{1}\right)=0$
+\end_inset
+
+ אם
+\begin_inset Quotes erd
+\end_inset
+
+ם 
+\begin_inset Formula $x_{1}^{k}=0$
+\end_inset
+
+ ו-
+\begin_inset Formula $h_{2}\left(x_{2}\right)=0$
+\end_inset
+
+ אם
+\begin_inset Quotes erd
+\end_inset
+
+ם 
+\begin_inset Formula $x_{2}^{k}=1$
+\end_inset
+
+.
+ נשים לב כי 
+\begin_inset Formula $d\geq2$
+\end_inset
+
+ ו-
+\begin_inset Formula $\left|C\right|=d+1$
+\end_inset
+
+ לכן קיים 
+\begin_inset Formula $x_{3}\in C$
+\end_inset
+
+.
+ אם 
+\begin_inset Formula $x_{3}^{k}=0$
+\end_inset
+
+ אז 
+\begin_inset Formula $h_{1}\left(x_{3}\right)=0$
+\end_inset
+
+ ואם 
+\begin_inset Formula $x_{3}^{k}=1$
+\end_inset
+
+ אז 
+\begin_inset Formula $h_{2}\left(x_{3}\right)=0$
+\end_inset
+
+.
+ בסתירה להגדרת ההיפותזות.
+ )המקרה הסימטרי שקול(.
+\end_layout
+
+\begin_layout Standard
+לסיכום, הראינו כי לא קיימות היפותזות ב-
+\begin_inset Formula $\mathcal{H}_{con}$
+\end_inset
+
+ שמסוגלות לתייג את 
+\begin_inset Formula $C$
+\end_inset
+
+ לפי 
+\begin_inset Formula $L$
+\end_inset
+
+, כלומר 
+\begin_inset Formula $\left|\mathcal{H}_{C}\right|\neq C\rightarrow\mathcal{Y}$
+\end_inset
+
+, ולכן 
+\begin_inset Formula $\mathcal{H}_{con}$
+\end_inset
+
+ לא מנתצת את 
+\begin_inset Formula $C$
+\end_inset
+
+.
+ מכאן, נובע מיידית כי 
+\begin_inset Formula $\mathcal{H}_{con}$
+\end_inset
+
+ אינה מנתצת כל 
+\begin_inset Formula $C\subseteq\mathcal{X}$
+\end_inset
+
+ כך ש- 
+\begin_inset Formula $\left|C\right|\geq d+1$
+\end_inset
+
+.
+ לפיכך, 
+\begin_inset Formula $\text{VC-dimension}\left(\mathcal{H}_{con}\right)=d$
+\end_inset
+
+.
+ 
+\begin_inset Formula $\blacksquare$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+
+\series bold
+שאלה 
+\numeric on
+4
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+טענה: 
+\series default
+אם ל-
+\begin_inset Formula $\mathcal{H}$
+\end_inset
+
+ מקיימת את תכונת התכנסות במ
+\begin_inset Quotes erd
+\end_inset
+
+ש עם פונקציה 
+\begin_inset Formula $m_{\mathcal{H}}^{UC}:\left(0,1\right)^{2}\rightarrow\mathbb{N}$
+\end_inset
+
+, אז 
+\begin_inset Formula $\mathcal{H}$
+\end_inset
+
+ היא למידה 
+\begin_inset Formula $\text{Agnostic-PAC}$
+\end_inset
+
+ עם סיבוכיות מדגם 
+\begin_inset Formula $m_{\mathcal{H}}\left(\varepsilon,\delta\right)\leq m_{\mathcal{H}}^{UC}\left(\varepsilon/2,\delta\right)$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+הוכחה: 
+\series default
+יהיו 
+\begin_inset Formula $0<\varepsilon,\delta<1$
+\end_inset
+
+, התפלגות 
+\begin_inset Formula $\mathcal{D}$
+\end_inset
+
+ על 
+\begin_inset Formula $\mathcal{X\times Y}$
+\end_inset
+
+ ופונקציית הפסד 
+\begin_inset Formula $\ell$
+\end_inset
+
+ המגדירה את שגיאת ההכללה ואת השגיאה האמפירית.
+ מהגדרה, מדגם 
+\begin_inset Formula $S\subseteq\left(\mathcal{X\times Y}\right)^{m}$
+\end_inset
+
+ הינו 
+\begin_inset Formula $\varepsilon$
+\end_inset
+
+-מייצג עבור 
+\begin_inset Formula $\mathcal{D},\ell,\mathcal{H}$
+\end_inset
+
+ אם מתקיים 
+\begin_inset Formula $\left|L_{S}\left(h\right)-L_{\mathcal{D}}\left(h\right)\right|<\varepsilon$
+\end_inset
+
+ לכל 
+\begin_inset Formula $h\in\mathcal{H}$
+\end_inset
+
+ .
+ באופן שקול, מתקיים 
+\begin_inset Formula 
+\begin{align*}
+\left|L_{S}\left(h\right)-L_{\mathcal{D}}\left(h\right)\right|<\varepsilon & \iff L_{\mathcal{D}}\left(h\right)-\frac{\varepsilon}{2}<L_{S}\left(h\right)<L_{\mathcal{D}}\left(h\right)+\frac{\varepsilon}{2}\\
+ & \iff L_{\mathcal{D}}\left(h\right)<L_{S}\left(h\right)+\frac{\varepsilon}{2}<L_{\mathcal{D}}\left(h\right)+\varepsilon
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+נסמן ב-
+\begin_inset Formula $h_{S}$
+\end_inset
+
+ את הפלט של אלגוריתם הלמידה 
+\begin_inset Formula $ERM_{\mathcal{H}}\left(S\right)$
+\end_inset
+
+, כלומר 
+\begin_inset Formula $h_{S}=\underset{h\in\mathcal{H}}{\text{argmin}}\left(L_{S}\left(h\right)\right)$
+\end_inset
+
+, וב-
+\begin_inset Formula $h^{*}=\underset{h\in\mathcal{H}}{\text{argmin}}\left(L_{\mathcal{D}}\left(h\right)\right)$
+\end_inset
+
+ את המסווג שמשיג את שגיאת ההכללה המינימלית.
+ נבחין כי מתקיים עבור מדגם 
+\begin_inset Formula $S$
+\end_inset
+
+ 
+\begin_inset Formula $\frac{\varepsilon}{2}$
+\end_inset
+
+-מייצג מתקיים 
+\begin_inset Formula $L_{\mathcal{D}}\left(h_{S}\right)<L_{S}\left(h_{S}\right)+\frac{\varepsilon}{2}$
+\end_inset
+
+ וגם 
+\begin_inset Formula $L_{S}\left(h^{*}\right)+\frac{\varepsilon}{2}<L_{\mathcal{D}}\left(h^{*}\right)+\varepsilon$
+\end_inset
+
+.
+ כמו כן, מאופן פעולת 
+\begin_inset Formula $ERM_{\mathcal{H}}$
+\end_inset
+
+, מתקיים כי 
+\begin_inset Formula $(*)\:L_{S}\left(h_{S}\right)\leq L_{S}\left(h^{*}\right)$
+\end_inset
+
+ ולכן בסה
+\begin_inset Quotes erd
+\end_inset
+
+כ מתקיים 
+\begin_inset Formula 
+\[
+L_{\mathcal{D}}\left(h_{S}\right)<L_{S}\left(h_{S}\right)+\frac{\varepsilon}{2}\overset{(*)}{\leq}L_{S}\left(h^{*}\right)+\frac{\varepsilon}{2}<L_{\mathcal{D}}\left(h^{*}\right)+\varepsilon
+\]
+
+\end_inset
+
+ כלומר, מתקיים 
+\begin_inset Formula $L_{\mathcal{D}}\left(h_{S}\right)\leq\underset{h\in\mathcal{H}}{\text{min}}L_{\mathcal{D}}\left(h\right)+\varepsilon$
+\end_inset
+
+ )נוכל לעדן לא
+\begin_inset Quotes erd
+\end_inset
+
+ש חלש(.
+ הראינו כי 
+\begin_inset Formula 
+\[
+S_{0}\in\left\{ S\subseteq\mathcal{X\times Y}:\text{S is }\frac{\varepsilon}{2}\text{-representative }\right\} \Rightarrow S_{0}\in\left\{ S\subseteq\mathcal{X\times Y}:L_{\mathcal{D}}\left(h_{S}\right)\leq\underset{h\in\mathcal{H}}{\text{min}}L_{\mathcal{D}}\left(h\right)+\varepsilon\right\} 
+\]
+
+\end_inset
+
+ ולכן 
+\begin_inset Formula $\left\{ L_{\mathcal{D}}\left(h_{S}\right)\leq\underset{h\in\mathcal{H}}{\text{min}}L_{\mathcal{D}}\left(h\right)+\varepsilon\right\} \supseteq\left\{ \text{S is }\frac{\varepsilon}{2}\text{-representative }\right\} $
+\end_inset
+
+ 
+\begin_inset Formula $(**)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+כעת, מאחר ו-
+\begin_inset Formula $\mathcal{H}$
+\end_inset
+
+ מקיימת את תכונת התכנסות במידה שווה, אז קיימת פונקציה 
+\begin_inset Formula $m_{\mathcal{H}}^{UC}$
+\end_inset
+
+ כך שלכל 
+\begin_inset Formula $m\in\mathbb{N}$
+\end_inset
+
+ המקיים 
+\begin_inset Formula $m\geq m_{\mathcal{H}}^{UC}\left(\frac{\varepsilon}{2},\delta\right)$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula 
+\[
+\mathbb{P}_{S\sim\mathcal{D}^{m}}\left(L_{\mathcal{D}}\left(h_{S}\right)\leq\underset{h\in\mathcal{H}}{\text{min}}L_{\mathcal{D}}\left(h\right)+\varepsilon\right)\overset{(**)}{\geq}\mathbb{P}_{S\sim\mathcal{D}^{m}}\left(S\text{ is }\frac{\varepsilon}{2}\text{-representative}\right)\geq1-\delta
+\]
+
+\end_inset
+
+כלומר, 
+\begin_inset Formula $\mathcal{H}$
+\end_inset
+
+ למידה 
+\begin_inset Formula $\text{Agnostic-PAC}$
+\end_inset
+
+, עם סיבוכיות מדגם 
+\begin_inset Formula $m_{\mathcal{H}}\left(\varepsilon,\delta\right)\leq m_{\mathcal{H}}^{UC}\left(\frac{\varepsilon}{2},\delta\right)$
+\end_inset
+
+.
+ כלומר, 
+\begin_inset Formula $\mathcal{H}$
+\end_inset
+
+ המקיימת את תכונת התכנסות במ
+\begin_inset Quotes erd
+\end_inset
+
+ש, מקיימת את חוק המספרים הגדולים )
+\begin_inset Formula $L_{S}$
+\end_inset
+
+ מתכנס בהסתברות ל-
+\begin_inset Formula $L_{\mathcal{D}}$
+\end_inset
+
+( לכל 
+\begin_inset Formula $\mathcal{D},\varepsilon,\delta$
+\end_inset
+
+ ולכן בפרט קיים חסם לשגיאת ההכללה.
+ 
+\begin_inset Formula $\blacksquare$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+שאלה 
+\numeric on
+7
+\family roman
+\shape up
+\size normal
+\emph off
+\numeric off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+- מונוטוניות ב-
+\begin_inset Formula $\text{VC-Dimension}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+טענה: 
+\series default
+יהיו 
+\begin_inset Formula $\mathcal{H}_{1},\mathcal{H}_{2}$
+\end_inset
+
+ מחלקות היפותזות של סיווג בינארי כך ש- 
+\begin_inset Formula $\mathcal{H}_{1}\subseteq\mathcal{H}_{2}$
+\end_inset
+
+, אזי 
+\begin_inset Formula $\text{VC}\left(\mathcal{H}_{1}\right)\leq\text{VC}\left(\mathcal{H}_{2}\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+הוכחה: 
+\series default
+נסמן 
+\begin_inset Formula $d_{1}:=\text{VC}\left(\mathcal{H}_{1}\right)$
+\end_inset
+
+ ו-
+\begin_inset Formula $d_{2}:=\text{VC}\left(\mathcal{H}_{2}\right)$
+\end_inset
+
+.
+ מההכלה, נוכל להסיק כי 
+\begin_inset Formula $\mathcal{H}_{1},\mathcal{H}_{2}$
+\end_inset
+
+ פועלות על מדגמים מעל אותו מרחב מדגם, כלומר לכל 
+\begin_inset Formula $h\in\mathcal{H}_{1},\mathcal{H}_{2}$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $h:\mathcal{X\rightarrow}\left\{ 0,1\right\} $
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+מהגדרת מימד 
+\begin_inset Formula $\text{VC}$
+\end_inset
+
+, מאחר ו-
+\begin_inset Formula $\text{VC}\left(\mathcal{H}_{1}\right)=d_{1}$
+\end_inset
+
+ קיימת קבוצה 
+\begin_inset Formula $C\subseteq\mathcal{X}$
+\end_inset
+
+ בת 
+\begin_inset Formula $d_{1}$
+\end_inset
+
+ דגימות כך ש- 
+\begin_inset Formula $\mathcal{H}_{1}$
+\end_inset
+
+ מנתצת את 
+\begin_inset Formula $C$
+\end_inset
+
+.
+ מאחר וכל ההיפותזות ב-
+\begin_inset Formula $\mathcal{H}_{1}$
+\end_inset
+
+ מוכלות ב-
+\begin_inset Formula $\mathcal{H}_{2}$
+\end_inset
+
+ אז בפרט 
+\begin_inset Formula $\mathcal{H}_{2}$
+\end_inset
+
+ מנתצת את 
+\begin_inset Formula $C$
+\end_inset
+
+, כלומר קיימות 
+\begin_inset Formula $2^{d_{1}}$
+\end_inset
+
+ היפותזות ב-
+\begin_inset Formula $\mathcal{H}_{C}$
+\end_inset
+
+.
+ לכן נוכל להסיק כי מימד 
+\begin_inset Formula $\text{VC}$
+\end_inset
+
+ של 
+\begin_inset Formula $\mathcal{H}_{2}$
+\end_inset
+
+ הינו לכל הפחות מימד 
+\begin_inset Formula $\text{VC}$
+\end_inset
+
+ של 
+\begin_inset Formula $\mathcal{H}_{2}$
+\end_inset
+
+, כלומר 
+\begin_inset Formula $d_{1}\leq d_{2}$
+\end_inset
+
+.
+ כנדרש.
+ 
+\begin_inset Formula $\blacksquare$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+שאלה 
+\numeric on
+8
+\end_layout
+
+\begin_layout Standard
+יהי 
+\begin_inset Formula $\mathcal{X}$
+\end_inset
+
+ מרחב מדגם, ו-
+\begin_inset Formula $\mathcal{Y}=\left\{ \pm1\right\} $
+\end_inset
+
+, 
+\begin_inset Formula $\mathcal{H}\subseteq\mathcal{Y^{X}}$
+\end_inset
+
+ מחלקת היפותזות.
+ נגדיר את הפונקציה 
+\begin_inset Formula $\tau_{\mathcal{H}}(m):\mathbb{N}\rightarrow\mathbb{N}$
+\end_inset
+
+ באופן הבא:
+\begin_inset Formula 
+\[
+\tau_{\mathcal{H}}(m):=\text{max}\left\{ \left|\mathcal{H}_{C}\right|:C\subseteq\mathcal{X},\left|C\right|=m\right\} 
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+הפונקציה מודדת את קצב הגידול המירבי של מחלקת ההיפותזות על מדגם בגודל 
+\begin_inset Formula $m$
+\end_inset
+
+.
+ בפרט, מחזירה את המספר המקסימלי של היפותזות ב-
+\begin_inset Formula $\mathcal{H}$
+\end_inset
+
+ עבור תת-קבוצה של מרחב המדגם 
+\begin_inset Formula $\mathcal{X}$
+\end_inset
+
+ )דגימות( בגודל 
+\begin_inset Formula $m$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Enumerate
+נניח כי 
+\begin_inset Formula $VCdim\left(\mathcal{H}\right)=\infty$
+\end_inset
+
+, אזי 
+\begin_inset Formula $\tau_{\mathcal{H}}\left(m\right)\equiv2^{m}$
+\end_inset
+
+ לכל 
+\begin_inset Formula $m\in\mathbb{N}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+אם מימד 
+\begin_inset Formula $VCdim\left(\mathcal{H}\right)=d$
+\end_inset
+
+, אז לכל 
+\begin_inset Formula $m\leq d$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula $\tau_{\mathcal{H}}\left(m\right)=2^{m}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+טענה: 
+\series default
+אם 
+\begin_inset Formula $VCdim\left(\mathcal{H}\right)=d$
+\end_inset
+
+ ו-
+\begin_inset Formula $m>d$
+\end_inset
+
+ אזי 
+\begin_inset Formula 
+\[
+\tau_{\mathcal{H}}\left(m\right)\leq\left(\frac{em}{d}\right)^{d}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\series bold
+הוכחה:
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+טענת עזר
+\family roman
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+1
+\numeric off
+: 
+\series default
+לכל 
+\begin_inset Formula $C\subseteq\mathcal{X}$
+\end_inset
+
+ בגודל סופי ולכל היפותזה 
+\begin_inset Formula $\mathcal{H}$
+\end_inset
+
+, מתקיים 
+\begin_inset Formula 
+\[
+\left|\mathcal{H}_{C}\right|\leq\left|\left\{ B\subseteq C\right\} :\mathcal{H}\text{ shatters }B\right|
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+הוכחה: תהי 
+\begin_inset Formula $\mathcal{H}$
+\end_inset
+
+, נוכיח באינדוקציה על 
+\begin_inset Formula $\left|C\right|=m$
+\end_inset
+
+.
+ נסמן 
+\begin_inset Formula $C=\left\{ c_{1},...,c_{m}\right\} $
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+בסיס: 
+\series default
+עבור 
+\begin_inset Formula $m=1$
+\end_inset
+
+, נבחין כי 
+\begin_inset Formula $B\in\left\{ \emptyset,\left\{ c_{1}\right\} \right\} $
+\end_inset
+
+.
+ ראשית, נבחין כי הקבוצה הריקה מנותצת באופן ריק על ידי 
+\begin_inset Formula $\mathcal{H}$
+\end_inset
+
+.
+ נתבונן ב- 
+\begin_inset Formula $\left\{ c_{1}\right\} $
+\end_inset
+
+.
+ מאחר ו-
+\begin_inset Formula $\mathcal{Y}=\left\{ \pm1\right\} $
+\end_inset
+
+, אז קיימת לפחות היפותזה אחת ב-
+\begin_inset Formula $\mathcal{H}_{C}$
+\end_inset
+
+, ולכל היותר 
+\begin_inset Formula $2$
+\end_inset
+
+ )אם 
+\begin_inset Formula $\mathcal{H}$
+\end_inset
+
+ מנתצת את 
+\begin_inset Formula $\left\{ c_{1}\right\} $
+\end_inset
+
+(.
+ לכן, אי-השוויון מתקיים עם
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+1
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\numeric off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+בשני הצדדים או 
+\numeric on
+2
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\numeric off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+בשני צידיו.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+צעד: 
+\series default
+נניח כי הטענה נכונה עבור קבוצות מגודל 
+\begin_inset Formula $k<m$
+\end_inset
+
+, נוכיח עבור 
+\begin_inset Formula $m$
+\end_inset
+
+.
+ נסמן 
+\begin_inset Formula $C=\left\{ c_{2},...,c_{m}\right\} $
+\end_inset
+
+.
+ הראינו כי נוכל לייצג מחלקת היפותזות מצומצמת על קבוצה 
+\begin_inset Formula $C$
+\end_inset
+
+ בתור וקטור התיוג אליהם כל היפותזה ממפה את המדגם.
+ נגדיר 
+\begin_inset Formula 
+\[
+\begin{array}{c}
+Y_{0}=\left\{ \left(y_{2},...,y_{m}\right):\left(0,y_{2},...,y_{m}\right)\in\mathcal{H}_{C}\lor\left(1,y_{2},...,y_{m}\right)\in\mathcal{H}_{C}\right\} \\
+Y_{1}=\left\{ \left(y_{2},...,y_{m}\right):\left(0,y_{2},...,y_{m}\right)\in\mathcal{H}_{C}\land\left(1,y_{2},...,y_{m}\right)\in\mathcal{H}_{C}\right\} 
+\end{array}
+\]
+
+\end_inset
+
+ראשית, נבחין כי 
+\begin_inset Formula $Y_{0}$
+\end_inset
+
+ ו-
+\begin_inset Formula $Y_{1}$
+\end_inset
+
+ מוגדרות להיות קבוצות התיוגים, כלומר ההיפותזות, על הקבוצה 
+\begin_inset Formula $C'$
+\end_inset
+
+.
+ בפרט, ההיפותזות מיוצגות כוקטורי הערכים אליהם הן ממפות את איברי 
+\begin_inset Formula $C$
+\end_inset
+
+, נוכל לכתוב 
+\begin_inset Formula $Y_{0}=\mathcal{H}_{C'}$
+\end_inset
+
+.
+ כמו כן, נבחין כי התיוגים ב-
+\begin_inset Formula $Y_{1}$
+\end_inset
+
+ על 
+\begin_inset Formula $C'$
+\end_inset
+
+ זהים למעט התיוג של 
+\begin_inset Formula $c_{1}$
+\end_inset
+
+.
+ לכן, האיחוד של 
+\begin_inset Formula $Y_{1}$
+\end_inset
+
+ ו-
+\begin_inset Formula $Y_{0}$
+\end_inset
+
+ הינו כל התיוגים האפשריים על הקבוצה 
+\begin_inset Formula $C$
+\end_inset
+
+.
+ נתבונן ב-
+\begin_inset Formula $\left|Y_{0}\right|$
+\end_inset
+
+, 
+\begin_inset Formula $v\in Y_{0}$
+\end_inset
+
+ כאשר 
+\begin_inset Formula $v\in\left\{ 0,1\right\} ^{m-1}$
+\end_inset
+
+ מייצג היפותזה שיתכן ומיפתה את 
+\begin_inset Formula $c_{1}$
+\end_inset
+
+ לאפס או לאחת.
+ כלומר, אם קיימת היפותזה כזו, היא תיספר ב-
+\begin_inset Formula $Y_{0}$
+\end_inset
+
+ פעם אחת.
+ מנגד, 
+\begin_inset Formula $Y_{1}$
+\end_inset
+
+ מחזיקה 
+\begin_inset Formula $u\in\left\{ 0,1\right\} ^{m-1}$
+\end_inset
+
+ כאשר ההיפותזה ממפה את 
+\begin_inset Formula $c_{1}$
+\end_inset
+
+ לשתי התגיות.
+ לפיכך, אם קיימות שתי היפותזות זהות למעט בקוארדינטה הראשונה, אז נספור אחת
+ ב-
+\begin_inset Formula $Y_{0}$
+\end_inset
+
+ ואת השניה ב-
+\begin_inset Formula $Y_{1}$
+\end_inset
+
+.
+ בסה
+\begin_inset Quotes erd
+\end_inset
+
+כ, נסיק כי 
+\begin_inset Formula $\left|\mathcal{H}_{C}\right|=\left|Y_{1}\right|+\left|Y_{0}\right|$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+מאחר ו-
+\begin_inset Formula $Y_{0}=\mathcal{H}_{C'}$
+\end_inset
+
+, אז מהנחת האינדוקציה על 
+\begin_inset Formula $\mathcal{H}$
+\end_inset
+
+ ו-
+\begin_inset Formula $C'$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula 
+\[
+\left|Y_{0}\right|=\left|\mathcal{H}_{C'}\right|\leq\left|\left\{ B\subseteq C'\right\} :\mathcal{H}\text{ shatters }B\right|=\left|\left\{ B\subseteq C\right\} :c_{1}\notin B,\:\mathcal{H}\text{ shatters }B\right|
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+כעת, נגדיר 
+\begin_inset Formula $\mathcal{H}'=\left\{ h\in\mathcal{H}:\exists h'\in\mathcal{H}\text{ s.t }\left(h(c_{1}),...,h(c_{m})\right)=\left(1-h'(c_{1}),...,h'(c_{m})\right)\right\} $
+\end_inset
+
+.
+ כלומר 
+\begin_inset Formula $\mathcal{H}'$
+\end_inset
+
+ הינה מחלקת היפותזות כך שלכל 
+\begin_inset Formula $h\in\mathcal{H}'$
+\end_inset
+
+ קיימת היפותזה שלא מסכימה איתה על 
+\begin_inset Formula $c_{1}$
+\end_inset
+
+ ב-
+\begin_inset Formula $\mathcal{H}$
+\end_inset
+
+.
+ נבחין כי מתקיים 
+\begin_inset Formula $Y_{1}=\mathcal{H}'_{C'}$
+\end_inset
+
+, וכי מההגדרה אם 
+\begin_inset Formula $\mathcal{H}'$
+\end_inset
+
+ מנתצת קבוצה 
+\begin_inset Formula $B\subseteq C'$
+\end_inset
+
+, כלומר אם 
+\begin_inset Formula $\mathcal{H}'_{B}$
+\end_inset
+
+ מכילה את כל התיוגים האפשריים עבור קבוצה 
+\begin_inset Formula $B$
+\end_inset
+
+, אז 
+\begin_inset Formula $\mathcal{H}'_{B\cup\left\{ c_{1}\right\} }$
+\end_inset
+
+ מכילה את כל התיוגים האפשריים עבור 
+\begin_inset Formula $B\cup\left\{ c_{1}\right\} $
+\end_inset
+
+, כלומר 
+\begin_inset Formula $\mathcal{H}'$
+\end_inset
+
+ מנתצת גם את 
+\begin_inset Formula $B\cup\left\{ c_{1}\right\} \subseteq C$
+\end_inset
+
+.
+ לסיכום, נקבל מהנחת האינדוקציה על 
+\begin_inset Formula $\mathcal{H}'$
+\end_inset
+
+ ו-
+\begin_inset Formula $C'$
+\end_inset
+
+ כי 
+\begin_inset Formula 
+\begin{align*}
+\left|Y_{1}\right| & =\left|\mathcal{H}'_{C'}\right|\overset{I.H}{\leq}\left|\left\{ B\subseteq C'\right\} :\mathcal{H}'\text{ shatters }B\right|=\left|\left\{ B\subseteq C'\right\} :\mathcal{H}'\text{ shatters }B\cup\left\{ c_{1}\right\} \right|\\
+ & =\left|\left\{ B\subseteq C\right\} :c_{1}\in B,\:\mathcal{H}'\text{ shatters }B\right|\leq\left|\left\{ B\subseteq C\right\} :c_{1}\in B,\:\mathcal{H}\text{ shatters }B\right|
+\end{align*}
+
+\end_inset
+
+ לפיכך 
+\begin_inset Formula 
+\begin{align*}
+\left|\mathcal{H}_{C}\right| & \leq\left|\left\{ B\subseteq C\right\} :c_{1}\notin B,\:\mathcal{H}\text{ shatters }B\right|+\left|\left\{ B\subseteq C\right\} :c_{1}\in B,\:\mathcal{H}\text{ shatters }B\right|\\
+ & =\left|\left\{ B\subseteq C\right\} :\mathcal{H}\text{ shatters }B\right|
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\blacksquare
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+החסם שהוכחנו מבטא שכמות ההיפותזות בצמצום על 
+\begin_inset Formula $C$
+\end_inset
+
+ )כלומר הפונקציות שמשיגות תיוגים שונים עבור איברי 
+\begin_inset Formula $C$
+\end_inset
+
+( חסומה מלמעלה על ידי כמות תתי-הקבוצות של 
+\begin_inset Formula $C$
+\end_inset
+
+ ש-
+\begin_inset Formula $\mathcal{H}$
+\end_inset
+
+ מנתצת.
+ כמות תתי הקבוצות של 
+\begin_inset Formula $C$
+\end_inset
+
+ היא 
+\begin_inset Formula $2^{m}$
+\end_inset
+
+, ולכן מההגדרה אם 
+\begin_inset Formula $C$
+\end_inset
+
+ עצמה מנותצת על ידי 
+\begin_inset Formula $\mathcal{H}$
+\end_inset
+
+ אז 
+\begin_inset Formula $\left|\mathcal{H}_{C}\right|=2^{m}$
+\end_inset
+
+ ולכן החסם הדוק.
+ 
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+טענת עזר 
+\numeric on
+2
+\numeric off
+: 
+\series default
+נראה כי לכל קבוצה 
+\begin_inset Formula $C\subseteq\mathcal{X}$
+\end_inset
+
+ מתקיים 
+\begin_inset Formula 
+\[
+|\{B\subseteq C|\mathcal{H}\text{ shatters }B\}|\leqslant\sum_{k=0}^{d}\left(\begin{array}{l}
+m\\
+k
+\end{array}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\series bold
+הוכחה: 
+\series default
+המספר 
+\begin_inset Formula $\sum_{k=0}^{m}\binom{m}{k}=2^{m}$
+\end_inset
+
+ מייצג את כמות תתי הקבוצות ב-
+\begin_inset Formula $C$
+\end_inset
+
+, והראינו כי מספר זה חוסם את מספר תתי-הקבוצות ש-
+\begin_inset Formula $\mathcal{H}$
+\end_inset
+
+ מנתצת.
+ עם זאת, מתקיים 
+\begin_inset Formula $d=\text{VC}dim\left(\mathcal{H}\right)$
+\end_inset
+
+ ו- 
+\begin_inset Formula $m>d$
+\end_inset
+
+, אז מהגדרה לכל 
+\begin_inset Formula $B\subseteq\mathcal{X}$
+\end_inset
+
+ ובפרט לכל 
+\begin_inset Formula $B\subseteq C$
+\end_inset
+
+ כך ש- 
+\begin_inset Formula $\left|B\right|>d$
+\end_inset
+
+ 
+\begin_inset Formula $\mathcal{H}$
+\end_inset
+
+ לא מנתצת את 
+\begin_inset Formula $B$
+\end_inset
+
+.
+ לכן, נוכל להדק את החסם באמצעות חיסור תתי-הקבוצות שבהכרח אינן מנותצות, כלומר
+ כאשר 
+\begin_inset Formula $k>d$
+\end_inset
+
+.
+ כלומר, כמות תתי הקבוצות המנותצות ע
+\begin_inset Quotes erd
+\end_inset
+
+י 
+\begin_inset Formula $\mathcal{H}$
+\end_inset
+
+ הינה לכל היותר 
+\begin_inset Formula $\sum_{k=0}^{d}\left(\begin{array}{l}
+m\\
+k
+\end{array}\right)$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+
+\series bold
+מסקנה: 
+\series default
+עבור 
+\begin_inset Formula $m>d$
+\end_inset
+
+, מתקיים 
+\begin_inset Formula $\tau_{\mathcal{H}}(m)\leqslant\left(\frac{em}{d}\right)^{d}$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\series bold
+הוכחת המסקנה: 
+\begin_inset Formula 
+\[
+\tau_{\mathcal{H}}(m)=\underset{C\subseteq\mathcal{X},\left|C\right|=m}{\text{max}}\left|\mathcal{H}_{C}\right|\underset{\text{Lemma 1}}{\leq}|\{B\subseteq C|\mathcal{H}\text{ shatters }B\}|\underset{\text{Lemma 2}}{\leq}\sum_{k=0}^{d}\left(\begin{array}{l}
+m\\
+k
+\end{array}\right)\underset{\text{Hint}}{\leq}\left(\frac{em}{d}\right)^{d}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\blacksquare
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+אם 
+\begin_inset Formula $m=d$
+\end_inset
+
+, אז נוכל לבחור מדגם 
+\begin_inset Formula $C$
+\end_inset
+
+ שינותץ על ידי 
+\begin_inset Formula $\mathcal{H}$
+\end_inset
+
+, כלומר יתקיים 
+\begin_inset Formula $\left|\mathcal{H}_{C}\right|=2^{m}$
+\end_inset
+
+.במקרה זה, נבחין כי טענת עזר
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+1
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\numeric off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+וטענת עזר
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+2
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\numeric off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+מתקיימות )
+\begin_inset Formula $\sum_{k=0}^{d}\left(\begin{array}{l}
+m\\
+k
+\end{array}\right)=2^{m}$
+\end_inset
+
+( ולכן מתקיים
+\begin_inset Formula 
+\[
+2^{m}=\tau_{\mathcal{H}}(m)\leq\left(\frac{em}{m}\right)^{m}=e^{m}
+\]
+
+\end_inset
+
+ כלומר, החסם לא הדוק.
+ 
+\end_layout
+
+\begin_layout Enumerate
+נאפיין במילים את התנהגות 
+\begin_inset Formula $\tau_{\mathcal{H}}(m)$
+\end_inset
+
+.
+ כאשר 
+\begin_inset Formula $m\leq VCdim\left(\mathcal{H}\right)$
+\end_inset
+
+ נקבל אזי 
+\begin_inset Formula $\mathcal{H}_{C}$
+\end_inset
+
+ גדלה מעריכית ב-
+\begin_inset Formula $m$
+\end_inset
+
+, וכאשר 
+\begin_inset Formula $m>VCdim\left(\mathcal{H}\right)$
+\end_inset
+
+ 
+\begin_inset Formula $\mathcal{H}_{C}$
+\end_inset
+
+ גדלה פולינומיאלית ב-
+\begin_inset Formula $m$
+\end_inset
+
+.
+ מכאן, נוכל להגדיר אפיון שקול למימד 
+\begin_inset Formula $\text{VC}$
+\end_inset
+
+.
+ אם קיים 
+\begin_inset Formula $m_{0}\in\mathbb{N}$
+\end_inset
+
+ עבורו לכל 
+\begin_inset Formula $m>m_{0}$
+\end_inset
+
+ הפונקציה 
+\begin_inset Formula $\tau_{\mathcal{H}}\left(m\right)$
+\end_inset
+
+ פולינומית ב-
+\begin_inset Formula $m$
+\end_inset
+
+, אז מימד 
+\begin_inset Formula $\text{VC}$
+\end_inset
+
+ של 
+\begin_inset Formula $\mathcal{H}$
+\end_inset
+
+ הינו 
+\begin_inset Formula $m_{0}$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+
+\series bold
+פרק מעשי
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+שאלה 
+\numeric on
+10
+\end_layout
+
+\begin_layout Standard
+נתבונן בהתפלגות הטעות של האלגוריתם כפונקציה של מספר המסווגים שהשתתפו בחיזוי,
+ כאשר כל גרף מתאר את ההתפלגות מעל נתונים שנוצרו עם רמות רעש שונות.
+ ניתן לראות עקומת שיפור משמעותית במעבר עבור מסווג שנסמך על מספר יחסית נמוך
+ של מסווגים בודדים, כפי שניתן לראות בדעיכה של קצב הטעות ב-
+\begin_inset Formula $\text{train}$
+\end_inset
+
+ וב-
+\begin_inset Formula $\text{test}$
+\end_inset
+
+.
+ זאת, בהתאם לקצב הדעיכה האקספוננציאלי בטעות האמפירית כתוצאה מהשימוש ב-
+\begin_inset Formula $\text{boosting}$
+\end_inset
+
+.
+ כמו כן, נבחין כי בהתאמה למידת הרעש בדאטה, עקומת הטעות ב-
+\begin_inset Formula $\text{test}$
+\end_inset
+
+ משיגה תוצאה נמוכה יותר ככל שכמות הרעש נמוכה יותר, וכן כי הטעות במדגם ה-
+\begin_inset Formula $\text{test}$
+\end_inset
+
+ וה-
+\begin_inset Formula $\text{train}$
+\end_inset
+
+ יחסית מתייצבת עבור מספר גדול של מסווגים.
+ מנגד, עבור רמת רעש של 
+\begin_inset Formula $0.4$
+\end_inset
+
+, נראה כי הטעות ב-
+\begin_inset Formula $\text{test}$
+\end_inset
+
+ עולה החל משלב מסוים, הגם שבניסיונות נוספים )כתוצאה מהאקראיות בשליפת המדגמים(
+ מדגם ה-
+\begin_inset Formula $\text{test}$
+\end_inset
+
+ כן התייצב על ערך מסוים, גבוה מהערך עליו התייצב המסווג עבור דאטה מורעש ברמה
+ 
+\begin_inset Formula $0.01$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+בפועל, ככל שרמת הרעש עולה אנו מתקרבים למדגם יותר מציאותי של נתונים, ולכן
+ ההבדלים בין רמות הטעות בגרפים השונים טמונים בהשפעות של תהליך ה-
+\begin_inset Formula $\text{boosting}$
+\end_inset
+
+ על המסווג.
+ הגדלת מספר המסווגים )גודל הועדה( בתהליך הסיווג הינם אינדיקציה לסיבוכיות
+ מחלקת ההיפותזות, ולכן כפי שראינו בכיתה - ככל שכמות המסווגים גדלה, כך גדל
+ הדיוק )קטן ה-
+\begin_inset Formula $\text{bias}$
+\end_inset
+
+(, תוך גידול יחסית נשלט בשונות.
+ עם זאת, ככל שהבעיה הופכת למציאותית יותר )קרי, נכנס רעש לדאטה(, עבור ערכי
+ 
+\begin_inset Formula $T$
+\end_inset
+
+ קטנים נשיג שיפור בדיוק תוך גידול יחסית מינורי בשונות, אבל עבור 
+\begin_inset Formula $T$
+\end_inset
+
+ גדולים השונות תגדל בצורה משמעותית ולכן נקבל שגיאת הכללה גבוהה.
+ בפרט, אלגוריתם 
+\begin_inset Formula $\text{adaboost}$
+\end_inset
+
+ רגיש לדאטה מורעש, מפני שלכל טעות בסיווג יש השפעה אקספוננציאלית על הניסיון
+ לגשר על הטעות באמצעות עדכון ההתפלגות 
+\begin_inset Formula $D^{t}$
+\end_inset
+
+, ולכן המסווגים 
+\begin_inset Formula $h^{t}$
+\end_inset
+
+ 
+\begin_inset Formula $t\in[T]$
+\end_inset
+
+ 
+\begin_inset Quotes eld
+\end_inset
+
+ירדפו
+\begin_inset Quotes erd
+\end_inset
+
+ קודם כל אחרי השגיאות ומאחר שכל הדאטה מלא בהן אז נקבל שונות גדולה.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename q10.png
+	lyxscale 50
+	scale 50
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\lang english
+test and train error of the adaboos decision stamp classifier on generated
+ data as a function of the number of classifiers used in the prediction
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+שאלה 
+\numeric on
+11
+\end_layout
+
+\begin_layout Standard
+בגרף זה נוכל לראות את ה-
+\begin_inset Formula $\text{decision boundary}$
+\end_inset
+
+של המסווג לפי כמות חברי הועדה, יחד עם מדגם ה-
+\begin_inset Formula $\text{test}$
+\end_inset
+
+.
+ נבחין כי ככל שהדאטה מורעש יותר, ה-
+\begin_inset Formula $\text{decision boundary}$
+\end_inset
+
+ הופך מורכב יותר, ומשתנה יחסית לפי גודל הועדה )בהתאם לשונות שהראינו בשאלה
+ הקודמת(.
+ בהתאמה, נראה שה-
+\begin_inset Formula $\text{boundary}$
+\end_inset
+
+ נותר יחסית זהה חרף הגדלת חברי הועדה כאשר הרעש נמוך.
+ 
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename q11.png
+	lyxscale 50
+	scale 50
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\lang english
+Decision boundaries for different committees
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\series bold
+שאלה 
+\numeric on
+12
+\end_layout
+
+\begin_layout Standard
+בגרף זה נוכל לראות את ה-
+\begin_inset Formula $\text{decision boundary}$
+\end_inset
+
+ של גודל הועדה המיטבית במונחי מזעור שגיאת ההכללה על מדגם ה-
+\begin_inset Formula $\text{test}$
+\end_inset
+
+, לפי כמות הרעש בדאטה.
+ ראשית, נבחין כי מאחר והדאטה מסונתז, אז הנחת הרלייזביליות מתקיימת )עבור
+ פונקציה שמתארת את העיגול(, בפרט עבור הדאטה הלא מורעש - ולכן שגיאת ההכללה
+ על ה-
+\begin_inset Formula $\text{test}$
+\end_inset
+
+ מתאפסת.
+ כמו כן, נבחין כי ככל שהדאטה מורעש יותר, גודל הועדה המיטבית הולך וקטן.
+ הראינו בגרף בשאלה
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+10
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\numeric off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+כי השונות הולכת ועולה ככל שהדאטה מורעש יותר )עבור אלגוריתם 
+\begin_inset Formula $\text{adaboost}$
+\end_inset
+
+( ובהתאם שגיאת ההכללה שהינה שקלול של השונות וההטייה תגדל, ומכאן האלגוריתם
+ ישיג שיפור משמעותי כתוצאה מ-
+\begin_inset Formula $\text{boosting}$
+\end_inset
+
+, אך רק עבור גודל ועדה חסום )נמוך יחסית(.
+ למרות זאת, חרף גדלי הועדה השונים עבור הדאטה המורעש -
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+368
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\numeric off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+עבור רעש 
+\begin_inset Formula $0.1$
+\end_inset
+
+ ו-
+\begin_inset Formula $14$
+\end_inset
+
+ עבור רעש 
+\begin_inset Formula $0.4$
+\end_inset
+
+ - נבחין כי הטעות על מדגם ה-
+\begin_inset Formula $\text{test}$
+\end_inset
+
+ דומה.
+ עובדה זו ממחישה את היכולת המוגבלת של המסווג ללמוד מדוגמאות מורעשות.
+ 
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename q12.png
+	lyxscale 50
+	scale 50
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\lang english
+Decision boundary over the train data for best minimizer committee
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+שאלה 
+\numeric on
+13
+\end_layout
+
+\begin_layout Standard
+הגרף מתאר את המשקולות של ההתפלגות המדומה 
+\begin_inset Formula $D^{T}$
+\end_inset
+
+ בסוף ריצת 
+\begin_inset Formula $\text{Adaboost}$
+\end_inset
+
+.
+ בהתאמה לאופן פעולת האלגוריתם, נקודות קטנות מסמנות דגימות שהמסווגים הצליחו
+ להתגבר עליהן )בהכללה גסה(, בעוד הדגימות הגדולות מעידות על קושי מתמשך בסיווג
+ לאורך התאמת המסווגים 
+\begin_inset Formula $h_{i}$
+\end_inset
+
+ 
+\begin_inset Formula $i\in[T]$
+\end_inset
+
+, בין אם המסווג ה-
+\begin_inset Formula $h_{T}$
+\end_inset
+
+ הצליח או לא לסווג אותן.
+ במילים אחרות, גודל הדגימות מסמן את מידת הקושי של המסווגים השונים לסווג
+ אותן נכונה.
+ ה-
+\begin_inset Formula $\text{Decision boundary}$
+\end_inset
+
+ המשורטט בכל גרף מתאר את המסווג הראשי שמסתמך על
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+500
+\numeric off
+ המסווגים לפי המשקולות שלהם.
+ ראשית, נבחין כי כאשר הדאטה אינו מורעש, הדגימות הגדולות הינן בדיוק סביב
+ השפה של המעגל, בגבול בין התיוגים.
+ מאחר והראינו כי טעות ההכללה על ה-
+\begin_inset Formula $\text{test}$
+\end_inset
+
+ של האלגוריתם הינה
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+0
+\numeric off
+, וכפי שניתן לראות ב-
+\begin_inset Formula $\text{decision boundary}$
+\end_inset
+
+ עצמו, המסווג 
+\begin_inset Formula $h_{boosted}$
+\end_inset
+
+ הצליח לסווג את כל הדגימות נכונה, והדגימות הגדולות לאורך תהליך בניית 
+\begin_inset Formula $T$
+\end_inset
+
+ המסווגים סייעו בהגדרה של גבולות המעגל.
+ עבור הדאטה המורעש, ניכר כי הטעות הנגררת הולכת וגדלה, ובעיקר כי גם בסוף
+ התהליך האלגוריתם לא הצליח לסווג נכונה את הדגימות.
+ נשים לב לצורת הצלב של הדגימות של הדגימות שנוצרה בשני הגרפים משמאל - בהתאם
+ לאופן הסיווג של 
+\begin_inset Formula $\text{Decision stamp}$
+\end_inset
+
+ שמחלק את המרחב לפי הצירים )עבור דגימה ב-
+\begin_inset Formula $\mathbb{R}^{2}$
+\end_inset
+
+(.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename q13.png
+	lyxscale 50
+	scale 45
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\lang english
+Train samples proportional to their weights in the end of the iterative
+ proccess
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
